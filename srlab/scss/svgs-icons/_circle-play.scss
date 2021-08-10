@@ -1,0 +1,52 @@
+
+// : Fill Circle : //
+/// Triangle
+$transition-time: 50ms;
+$transition-delay: 100ms;
+
+/// Animation
+$animation-time: 500ms;
+
+@keyframes dash {
+   to {
+      stroke-dashoffset: 0;
+   }
+}
+
+// : Complete SVG : //
+.circle-arrow {
+   width: 32px;
+}
+
+// : Idle Circle Stroke : //
+.circle-bg {
+   stroke: #fff;
+   fill:transparent;
+   z-index:-1;
+}
+
+// : Overlay Circle Stroke : //
+.circle {
+   fill:transparent;
+   stroke: var(--primary-color,$primary);
+   stroke-dashoffset: 600;
+   stroke-dasharray: 600;
+}
+
+// : Triangle : //
+.tri {
+   fill: #fff;
+   transition: fill $transition-time linear;
+   transition-delay: $transition-delay;
+}
+
+.svg-btn:hover .circle-arrow {
+   .circle {
+      animation: dash $animation-time linear forwards;
+   }
+
+   .tri {
+      fill: var(--primary-color,$primary);
+   }
+
+}

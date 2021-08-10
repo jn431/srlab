@@ -1,0 +1,142 @@
+////
+/// @group layout
+////
+
+/// [1] All Grid Layouts
+.grid {
+  display: grid;
+  grid-gap: 2vw;
+
+  @include media("<tablet") {
+    grid-gap: 3vw;
+  }
+}
+
+.gr-1-2 {
+  display: grid;
+
+  @include media(">=650px") {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.gr-2-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+/// [2] Repeating 2s
+/// Grid 2, 1
+.gr-2 {
+  grid-template-columns: repeat(1, 1fr);
+
+  @include media(">=650px") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/// [2] Quadriple Grid
+/// Grid 4, 2, 1
+.gr-4 {
+  @include media("<500px") {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include media(">=500px", "<desktop") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(">=desktop") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fl-gr-4 {
+  display:grid;
+  grid-template-columns: repeat( 12, minmax(250px, 1fr) );
+}
+
+
+/// [3] Flexible Grid 5
+/// Max 5 Columns Odd Items Fill 2 Slots
+/* .fl-gr-5 {
+  @include media("<500px") {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @include media(">=500px", "<tablet") {
+    grid-template-columns: 2fr 2fr;
+
+    > div:nth-child(3n) {
+      grid-column: auto / span 2;
+    }
+  }
+
+  @include media(">=tablet", "<desktop") {
+    grid-template-columns: repeat(6, 1fr);
+
+    > div {
+      grid-column: auto / span 2;
+    }
+
+    > div:nth-child(n + 4) {
+      grid-column: auto / span 3;
+    }
+  }
+
+  @include media(">=desktop") {
+    grid-template-columns: repeat(5, 1fr);
+  }
+} */
+
+.g-3 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+
+  @at-root {
+    .contain#{&} {
+      @include media("<tablet") {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      @include media(">=tablet") {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .compact#{&} {
+      @include media("<950px") {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      @include media(">=950px") {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+.g-4 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+
+  @at-root {
+    .contain#{&} {
+      @include media("<650px") {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      @include media(">=650px", "<desktop") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media(">=desktop") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .compact#{&} {
+      @include media("<tablet") {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      @include media(">=tablet", "<desktop") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media(">=desktop") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}

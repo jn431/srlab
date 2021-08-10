@@ -1,0 +1,44 @@
+// # All forms
+form {
+    text-align: left;
+    max-width: 100%;
+    direction: ltr;
+    position: relative;
+    margin: 0 auto;
+}
+
+.form_container {
+    display: grid;
+    grid-template-columns: repeat(12, 6.5%);
+    grid-auto-rows: max-content;
+    grid-gap: 0 2%;
+
+    & > * {
+        grid-column: span 6 / span 6;
+    }
+}
+
+// * Input form-wrap
+.form-wrap {
+    margin-bottom: 20px;
+
+    input:not([type="checkbox"]):not([type="radio"]) {
+        @extend .input;
+        margin-top: 5px;
+        width: 100%;
+    }
+}
+
+// * Checkbox and radio form-wrap
+.form-wrap-opt {
+    margin-bottom: 15px;
+}
+
+// * Form width 50% rows
+.form-wrap.form_half {
+    grid-column: span 6 / span 6;
+}
+// * Form width 50% rows
+.form-wrap.form_full {
+    grid-column: span 12 / span 12;
+}

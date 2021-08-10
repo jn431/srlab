@@ -1,0 +1,41 @@
+// : Heading Margins : //
+h2 {
+   &.title {
+      @include media("<tablet") {
+         margin-bottom: 30px;
+      }
+      @include media(">=tablet") {
+         margin-bottom: 50px;
+      }
+   }
+}
+
+#logo-wrap img {
+   margin: 10px 0;
+}
+
+header {
+   ul.menu {
+      @include media(">=tablet", "<desktop") {
+         margin-left: 25px;
+      }
+      @include media(">=desktop") {
+         margin-left: 50px;
+      }
+   }
+}
+
+// : Mast Content : //
+/* .mast {
+   .super-heading + h2 {
+      margin-top: 1rem;
+    }
+
+    h2 {
+       margin: 0;
+    }
+
+    h2 + .cta-links {
+       margin-top: 2rem;
+    }
+} */

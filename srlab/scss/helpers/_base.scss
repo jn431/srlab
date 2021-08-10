@@ -1,0 +1,95 @@
+/**
+ * Base Style
+ * @file        _base.scss
+ * @author      Jaein Lee
+ * @author URI: https://resetvancity.com
+ * @package     jaeins_sass_base
+ * @updated     Mar 17 2021
+ * 01. Debugger
+ * 02. Font Stack
+ * 03. Highlight
+ */
+
+// [1] Debugger
+pre {
+    text-align: left;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-moz-selection {
+    // # FireFox
+    background: $desat;
+    color: #fff;
+}
+
+::selection {
+    background: $desat;
+    color: #fff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
+/// List Styles
+/// Bullets in paragraphs
+/// No bullets in menus and submenus
+ul {
+    p &,
+    .content &,
+    .contain & {
+        list-style: inside;
+    }
+}
+
+nav ul,
+ul.menu,
+ul.sub-menu {
+    list-style: none;
+}
+
+p {
+    line-height: 1.6;
+}
+
+// Positioning
+.left {
+    justify-content: start;
+    text-align: left;
+}
+.center {
+    justify-content: center;
+    text-align: center;
+}
+.right {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.content {
+    img {
+        display: block;
+
+        &.aligncenter {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &.alignright {
+            margin-left: auto;
+        }
+
+        &.size-full {
+            width: 100%;
+        }
+    }
+}

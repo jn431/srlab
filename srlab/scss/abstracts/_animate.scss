@@ -1,0 +1,111 @@
+/**
+ * @file _animate.scss
+ * Table of Contents:
+ * 01. bg_fadein
+ * 02. elastic_up
+ * 03. fade_down
+ * 04. fade_in
+ * 05. slide_up
+ * 06. spinner
+ */
+
+////
+/// @group animate
+////
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade_out {
+    0% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/// Elastic
+/// @param {String} $direction [up] - up/down/left/right
+@mixin elastic($direction) {
+    @if $direction == "up" {
+        @keyframes elastic_up {
+            0% {
+                //-webkit-transform: translateY(1200px) scale(0.7);
+                // -webkit-transform: translateY(1200px) translateZ(0);
+                // //transform: translateY(1200px) scale(0.7);
+                // transform: translateY(1200px) translateZ(0);
+                opacity: 0.7;
+            }
+            80% {
+                /* -webkit-transform: translateY(0) scale(0.7);
+                transform: translateY(0) scale(0.7);
+                opacity: 0.7; */
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    } // --- elastic up --- //
+    @if $direction == "left" {
+      @keyframes elastic_up {
+          0% {
+              //-webkit-transform: translateY(1200px) scale(0.7);
+
+              //transform: translateY(1200px) scale(0.7);
+
+          }
+          20% {
+            opacity: 0;
+          }
+          to {
+            -webkit-transform: translateX(0%) perspective(1px);
+            transform: translateX(0%) perspective(1px);
+
+              opacity: 1;
+          }
+      }
+  } // --- elastic up --- //
+}
+
+@include elastic("left");
+
+/// Fade Up/Down
+@mixin fade_directional {
+    @keyframes fade_down {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+        }
+        to {
+            opacity: 1;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+    }
+}
+
+/// Slide Up
+@mixin slide_up {
+    @keyframes slide_up {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        80% {
+            opacity: 0.7;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}

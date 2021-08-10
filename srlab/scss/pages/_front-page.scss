@@ -1,0 +1,184 @@
+/**
+ * > Frontpage - body.home
+ * Author: Jaein Lee
+ */
+body.home {
+    header {
+        position: absolute;
+        border-bottom-width: 0;
+    }
+
+    .mast {
+        .bg--overlay {
+            background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(243, 243, 243, 1) 62%,
+                rgba(216, 216, 216, 1) 100%
+            );
+        }
+
+        & + section {
+            background-color: rgba(222, 222, 222, 1);
+            margin-top: -80px;
+        }
+    }
+
+    svg {
+        display: block;
+    }
+
+    .poly {
+        fill: #fff;
+    }
+
+    .box {
+        @include offset_shadow(
+            $x: 0,
+            $y: 2,
+            $blur: 25,
+            $spread: 0,
+            $color: #000,
+            $opacity: 0.13
+        );
+        padding: 1rem;
+
+        h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color, $primary);
+            font-family: $header-stack;
+        }
+
+        @include media(">=tablet") {
+            padding: 2rem;
+
+            h3 {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+
+.fp-slider {
+    background-color: #fff;
+
+    h2 {
+        font-size: 2rem;
+        font-family: $header-stack;
+        span {
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-duration: 500ms;
+            -webkit-animation-delay: calc(var(--delay) * 80ms);
+            animation-delay: calc(var(--delay) * 80ms);
+        }
+    }
+
+    .slide {
+        p {
+            -webkit-transform: translateX(-150%);
+            transform: translateX(-150%);
+            opacity: 0;
+            animation-fill-mode: forwards;
+            animation-duration: 600ms;
+            animation-delay: 800ms;
+        }
+
+        &.slick-active {
+            background-color: #f5f5f5;
+
+            h2 span,
+            .cta-links a {
+                animation-name: fadein;
+
+            }
+
+            p {
+                animation-name: elastic_up;
+            }
+        }
+    }
+
+    // Slide Content
+    .sl-content {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+        position: relative;
+        min-height: 440px;
+
+        @include media("<650px", "landscape") {
+            padding: 120px 30px 30px 30px;
+        }
+        @include media("<650px", "portrait") {
+            padding: 32% 30px 30px 30px;
+            min-height: 500px;
+        }
+
+        @include media(">=desktop") {
+            min-height: 550px;
+        }
+    }
+
+    .text {
+        z-index: 5;
+        @include media(">=desktop") {
+            width: 50%;
+        }
+    }
+
+    .img-wrap {
+        position: absolute;
+        bottom: 0;
+        right: -10%;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-content: center;
+        align-items: flex-end;
+    }
+
+    @include media("<650px") {
+        .img-wrap {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+    }
+
+    @include media(">=650px") {
+        .sl-content {
+            align-content: center;
+        }
+        .slide {
+            transform: skew(20deg);
+            overflow: hidden;
+
+            .sl-content {
+                transform: skew(-20deg);
+            }
+        }
+    }
+
+    @include media(">=650px", "<desktop") {
+        h2 {
+            font-size: 2rem;
+        }
+        .sl-content {
+            padding: 50px;
+        }
+    }
+    @include media(">=desktop") {
+        .sl-content {
+            padding: 30px 100px;
+        }
+        .col {
+            width: 60%;
+        }
+        h2 {
+            font-size: 3.6rem;
+        }
+    }
+}

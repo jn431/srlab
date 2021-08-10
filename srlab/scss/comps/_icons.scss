@@ -1,0 +1,87 @@
+/// Default Icon Styling
+.icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &::after {
+        font-family: $icon-name;
+        font-weight: 400;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+
+    .hide {
+        text-indent: -9999px;
+    }
+}
+
+/// Dashicon Codes
+.icon {
+    &.instagram::after {
+        content: "\f12d";
+    }
+
+    &.facebook::after {
+        content: "\f304";
+    }
+
+    &.twitter::after {
+        content: "\f301";
+    }
+
+    &.email::after {
+        content: "\f466";
+    }
+
+    &.whatsapp::after {
+        content: "\f19a";
+    }
+
+    &.account::after {
+        content: "\f110";
+        font-size: 22px;
+    }
+}
+
+/// Text with Icon
+.chev-right,
+.external {
+    pointer-events: all;
+
+    &::after {
+        margin-left: 0.12em;
+        position: relative;
+        font-size: 1rem;
+    }
+}
+
+.chev-right {
+    &:not(.more) {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    &::after {
+        content: "\f345";
+        font-family: dashicons;
+        transition: transform 100ms ease-out;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    &:hover::after {
+        transform: translateX(6px);
+    }
+}
+
+.external {
+    &::after {
+        content: "\f504";
+    }
+    &:hover {
+        color: $font-color;
+    }
+}

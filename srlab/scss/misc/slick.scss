@@ -1,0 +1,241 @@
+@import "../abstracts/variables";
+
+/**
+ * Slick Slider
+ * @file slick.scss
+ * @author      Jaein Lee
+ * @author URI: https://resetvancity.com
+ * @package     jaeins_sass_base
+ * @updated     Mar 17 2021
+ * 01. Slick Arrow
+ * 02. Slick Slider
+ * 03. Slick Dots
+ * 04. Slick Slide
+ */
+
+/// @group Slick
+/// @prop {Color} Arrow-Bg [#000] - Prev/Next button background
+/// @prop {Color} Arrow-Bg-Hover [#1d1d1d] - Prev/Next button highlight background
+/// @prop {Color} Arrow-Border-Color [#ccc] - Prev/Next button background
+/// @prop {Color} Arrow-Color [#fff] - Color of arrow
+/// Slick Sub
+$slick-default: (
+    "arrow-bg": transparent,
+    "arrow-bg-hover": #1d1d1d,
+    "arrow-border-color": transparent,
+    "arrow-color": var(--primary-color, $primary),
+    "arrow-color-hover": #1d1d1d,
+);
+
+// [1] .SLICK-ARROW
+.slick-arrow {
+    color: map-get($slick-default, "arrow-bg");
+    background-color: map-get($slick-default, "arrow-bg");
+    border: 1px solid map-get($slick-default, "arrow-border-color");
+    // color: var(--primary-color, $primary);
+    // background-color: var(--primary-color, $primary);
+    // border: 1px solid var(--primary-color, $primary);
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    border-radius: 0;
+
+    &:hover,
+    &:active {
+        &::after {
+            color: map-get($slick-default, "arrow-color-hover");
+            background-color: map-get($slick-default, "arrow-bg-highlight");
+        }
+    }
+
+    &::after {
+        font-family: "Dashicons";
+        color: map-get($slick-default, "arrow-color");
+        font-size: 30px;
+    }
+}
+
+/* Slider */
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+
+    .next,
+    .slick-next {
+        right: 10px;
+        &::after {
+            content: "\f345";
+        }
+    }
+
+    .prev,
+    .slick-prev {
+        left: 10px;
+        &::after {
+            content: "\f341";
+        }
+    }
+
+    .slick-prev,
+    .slick-next {
+        text-indent: -9999px;
+
+        &::after {
+            right: 0;
+            left: 0;
+            top: 0;
+            text-indent: 0;
+        }
+    }
+
+    img {
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+.slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.dragging {
+        cursor: pointer;
+        cursor: hand;
+    }
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+}
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+
+    [dir="rtl"] & {
+        float: right;
+    }
+    img {
+        display: block;
+    }
+    &.slick-loading img {
+        display: none;
+    }
+
+    &.dragging img {
+        pointer-events: none;
+    }
+
+    .slick-initialized &,
+    .slick-slide {
+        display: block;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+
+    .slick-vertical & {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+// Dot
+ul.tab {
+    width: var(--gutter-contain, 88%);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    list-style: none;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    li {
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        width: 80px;
+        padding: 5px 10px 5px 0;
+        cursor: pointer;
+
+        a {
+            color: var(--font-color, $font-color);
+        }
+        &::after {
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: var(--font-color, $font-color);
+        }
+
+        &.slick-active {
+            a {
+                color: var(--primary-color, $primary);
+            }
+
+            &::after {
+                border-top: 1px solid var(--primary-color);
+                background-color: var(--primary-color, $primary);
+            }
+        }
+    }
+}

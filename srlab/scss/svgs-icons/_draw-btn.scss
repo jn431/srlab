@@ -1,0 +1,90 @@
+@mixin draw_btn(
+  $width: 200,
+  $height: 40,
+  $fill: transparent,
+  $initial-color: #fff,
+  $underline: 60
+) {
+  width: var(--width, $width);
+  height: var(--height, $height);
+
+  svg {
+    height: 100%; width: 100%;
+  }
+
+  span {
+    background-color: transparentize(#fff, 0.8);
+
+    color: $initial-color;
+    letter-spacing: 1.5px;
+    line-height: $height * 1px;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  // : Corners to Fill Border : //
+  &.corners {
+    $underline: 20;
+
+    @keyframes fill_stroke {
+      0% {
+        fill: $fill;
+        stroke: $initial-color;
+      }
+      100% {
+        fill: var(--primary-color,$primary);
+        stroke: var(--primary-color,$primary);
+      }
+    }
+    &:hover {
+      .shape {
+        stroke-dasharray: var(--width) 0, var(--dasharray-2) 0;
+        stroke-dashoffset: var(--hover-offset);
+        animation: fill_stroke 400ms forwards 600ms;
+      }
+    }
+
+    .shape {
+      fill: $fill;
+
+      stroke-dasharray: $underline var(--dasharray-1) , $underline var(--dasharray-2); // 20 20, 20 180
+      stroke-dashoffset: var(--offset);
+      stroke-width: 2px;
+      stroke: $initial-color;
+      transition: stroke-dashoffset 600ms, stroke-dasharray 600ms;
+    }
+  }
+
+  // : Bottom Line to Fill Border : //
+  &.btm {
+    @keyframes fill_stroke {
+      0% {
+        fill: $fill;
+        stroke: $initial-color;
+      }
+      100% {
+        fill: var(--primary-color,$primary);
+        stroke: var(--primary-color,$primary);
+      }
+    }
+    // HOVER STATE
+    &:hover {
+      .shape {
+        stroke-dasharray: var(--dasharray-2, (($width * 2) - ($height * 2))) 0;
+        stroke-dashoffset: var(--hover-offset);
+        animation: fill_stroke 400ms forwards 600ms;
+      }
+    }
+
+    .shape {
+      fill: $fill;
+      stroke-dasharray: $underline var(--dasharray-2, (($width * 2) - ($height * 2)));
+      stroke-dashoffset: var(--offset, (($width + $height) * -1) - ($height * 2) + 6);
+      stroke-width: 2px;
+      stroke: $initial-color;
+      transition: stroke-dashoffset 600ms, stroke-dasharray 600ms;
+    }
+  }
+}

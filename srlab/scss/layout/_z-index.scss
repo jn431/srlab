@@ -1,0 +1,33 @@
+header {
+    z-index: 100;
+
+    .mast-img,
+    .cover {
+        z-index: -1;
+    }
+
+    nav .contain {
+        z-index: 5;
+    }
+}
+
+span.chevron {
+    z-index: 1;
+}
+
+.scoot--up {
+    z-index: 100;
+}
+
+.cover {
+    z-index: -1;
+}
+
+// : Absolute Cover Overlay : //
+.cover ~ .c-over {
+    z-index: 50;
+}
+
+a.--overlay {
+    z-index: 5;
+}

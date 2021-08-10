@@ -1,0 +1,10 @@
+#adminmenu {
+    div.wp-menu-name,
+    .wp-submenu li a,
+    .collapse-button-label {
+        // Level 1 Admin Menu
+        letter-spacing: 0.6px;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+}

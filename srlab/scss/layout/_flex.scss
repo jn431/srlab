@@ -1,0 +1,212 @@
+////
+/// @group layout
+////
+
+%flex {
+    display: flex;
+    position: relative;
+}
+
+/// Standard [50% 50%]
+.l-2 {
+    @extend %flex;
+
+    > .col {
+        > div {
+            flex: 1;
+        }
+
+        &.content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    @include media("<650px") {
+        flex-wrap: wrap;
+
+        > .col {
+            flex: 1 0 100%;
+        }
+    }
+
+    @include media(">=650px") {
+        > .col {
+            flex: 1;
+        }
+
+        > div:nth-child(1) {
+            padding-right: 1rem;
+        }
+        > div:nth-child(2) {
+            padding-left: 1rem;
+        }
+    }
+}
+
+/// Standard [33% 33% 33%]
+.l-3 {
+    @extend %flex;
+
+    @include media("<tablet") {
+        flex-wrap: wrap;
+        > div {
+            flex: 1 0 100%;
+        }
+    }
+
+    @include media(">=tablet", "<desktop") {
+        flex-wrap: wrap;
+        > div {
+            flex: 1;
+        }
+        > div:nth-of-type(1) {
+            flex: 1 0 100%;
+        }
+    }
+
+    @include media(">=desktop") {
+        > div {
+            flex: 1;
+        }
+    }
+}
+
+/// Column 300px - Fill
+/// Padded Columns
+.l-300 {
+    @extend %flex;
+
+    @include media("<650px") {
+        flex-wrap: wrap;
+        > .col {
+            flex: 0 0 100%;
+        }
+
+        .col + .col {
+            padding-top: 1.5rem;
+        }
+    }
+    @include media(">=650px") {
+        > .col {
+            flex: 1;
+        }
+
+        > .col:nth-child(1) {
+            flex: 0 0 300px;
+            padding-right: 1rem;
+        }
+        > .col:nth-child(2) {
+            padding-left: 1rem;
+        }
+    }
+}
+.fl-300 {
+    @extend %flex;
+
+    @include media("<650px") {
+        flex-wrap: wrap;
+        > .col {
+            flex: 0 0 100%;
+        }
+
+        .col + .col {
+            padding-top: 1.5rem;
+        }
+    }
+    @include media(">=650px") {
+        > .col {
+            flex: 1;
+        }
+
+        > .col:nth-child(1) {
+            padding-right: 1rem;
+        }
+        > .col:nth-child(2) {
+            flex: 0 0 300px;
+            padding-left: 1rem;
+        }
+    }
+}
+
+/// ! Not Padded
+.cl-300 {
+    @extend %flex;
+
+    .col {
+        flex: 1;
+    }
+
+    .col:nth-child(2) {
+        margin-left: 30px;
+    }
+
+    // : COMPACT.CL-300 : //
+    @at-root .compact#{&} {
+        @include media(">=desktop") {
+            display: flex;
+
+            .col:nth-child(1) {
+                flex: 0 0 200px;
+            }
+        }
+
+        @include media(">=pc") {
+            .col:nth-child(1) {
+                flex: 0 0 320px;
+            }
+        }
+    }
+
+    // : CONTAIN.CL-300 : //
+    @at-root .contain#{&} {
+        @include media(">=tablet") {
+            display: flex;
+
+            .col:nth-child(1) {
+                flex: 0 0 200px;
+            }
+        }
+
+        @include media(">=pc") {
+            .col:nth-child(1) {
+                flex: 0 0 400px;
+            }
+        }
+    }
+}
+
+/// Flex Modifiers
+/// Row Reverse
+.--row-rev {
+    flex-direction: row-reverse;
+
+    > div:nth-child(1) {
+        padding-right: 0 !important;
+        padding-left: 30px;
+    }
+}
+/// Wrap
+.--wr {
+    flex-wrap: wrap;
+}
+
+/// Align Top
+.--at {
+    align-items: flex-start;
+}
+
+/// Align Center
+.--ac {
+    align-items: center;
+}
+
+/// Align Bottom
+.--ab {
+    align-items: flex-end;
+}
+
+/// Height Stretch
+.--str {
+    align-items: stretch;
+}

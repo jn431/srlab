@@ -1,0 +1,30 @@
+@import "admin-menu";
+@import "woo";
+
+body {
+   font-family: "Poppins", "Roboto", sans-serif;
+}
+
+// : Tabs : //
+h1.nav-tab-wrapper, .wrap h2.nav-tab-wrapper, .nav-tab-wrapper {
+   border-bottom: 0;
+}
+
+.nav-tab {
+   font-size: 13px;
+   font-weight: 400;
+}
+
+// : Tables : //
+.row-title {
+   font-weight: 500;
+}
+
+td.column-title strong, td.plugin-title strong {
+   font-weight: 400;
+   font-size: 13px;
+}
+
+#wp-content-editor-tools {
+   background-color: transparent;
+}

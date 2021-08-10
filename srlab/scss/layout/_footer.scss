@@ -1,0 +1,70 @@
+footer,
+#copyright {
+    background-color: var(--footer-color, $font-color);
+}
+
+// : Main Footer Styling : //
+footer {
+    color: #eee;
+    // Menu Titles
+    h4 {
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.05rem;
+        text-transform: capitalize;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: var(--primary-lighter, #96bac2);
+    }
+
+    .sm:hover {
+       background-color: var(--primary-lighter, #96bac2);
+    }
+
+    svg {
+        max-width: 240px;
+        .st0 {
+            fill: #52c8ec;
+        }
+        .st1 {
+            fill: #fff;
+        }
+    }
+
+    // Menus
+    ul.menu {
+        li + li {
+            margin-top: 0.25rem;
+        }
+    }
+}
+
+footer.gr .contain {
+    display: grid;
+    gap: 2vw;
+
+    @include media(">=650px") {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include media(">=tablet") {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+#copyright {
+    color: #ccc;
+    font-size: 0.7rem;
+    line-height: 20px;
+    grid-column: span 4;
+
+    .privacy {
+        justify-content: flex-end;
+    }
+
+    .contain {
+        border-top: 1px solid hsl(0deg, 0%, 20%);
+        line-height: 1;
+        padding: 10px 0;
+    }
+}

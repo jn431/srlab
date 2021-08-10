@@ -1,0 +1,16 @@
+figure {
+  img {
+    display: block;
+  }
+}
+
+figure.wide {
+  aspect-ratio: 16 / 10;
+
+  img {
+    display: block;
+    width: 100%; /* image box size as % of container, see step 1 */
+    height: 100%; /* image box size as % of container, see step 1 */
+    object-fit: cover; /* matching of image pixels to image box, see step 2 */
+  }
+}

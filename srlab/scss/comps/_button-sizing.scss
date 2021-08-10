@@ -1,0 +1,43 @@
+/// @group button-sizes
+/// Hero and Mast
+.b--hero {
+    padding: 14px 28px;
+    letter-spacing: 0.03em;
+}
+
+/// @group button-sizes
+/// Read more and secondary size
+.b--more {
+    display: inline-flex;
+    padding: 8px 16px;
+    letter-spacing: 0.02em;
+}
+
+/// @group button-sizes
+/// Very small button
+.b--sm {
+    display: inline-flex;
+    padding: 6px;
+    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+}
+
+/// @group button-sizes
+/// : Icon Circle Average
+.ico--med {
+   width: 2.2rem;
+   height: 2.2rem;
+   line-height: 1;
+   border-radius: 1.1rem;
+   font-size: 1.1rem;
+}
+
+/// @group button-sizes
+/// : Icon Circle Large
+.ico--lrg {
+   width: 4rem;
+   height: 4rem;
+   line-height: 4rem;
+   border-radius: 2rem;
+   font-size: 2.4rem;
+}

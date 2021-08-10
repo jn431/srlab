@@ -1,0 +1,146 @@
+/**
+ * Typography
+ * @package    srlab
+ * @author     Jaein Lee
+ * @version    1.04
+ */
+
+@font-face {
+    font-family: "Span Font";
+    src: url("../../assets/fonts/Span-Bold.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Modelica";
+    src: url("../../assets/fonts/BwModelica-Light.woff2") format("woff2"),
+        url("../../assets/fonts/BwModelica-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-display: block;
+}
+@font-face {
+    font-family: "Modelica";
+    src: url("../../assets/fonts/BwModelica-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: block;
+}
+
+@font-face {
+    font-family: "Modelica";
+    src: url("../../assets/fonts/BwModelica-Bold.woff2") format("woff2"),
+        url("../../assets/fonts/BwModelica-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: block;
+}
+
+// : Font Stack ://
+$admin-font-stack: "Poppins", sans-serif;
+$code-font-stack: Consolas, Monaco, monospace;
+$font-stack: "Poppins", "Segoe UI", sans-serif !default;
+$header-stack: "Span Font", "Poppins", "Segoe UI", sans-serif;
+$body-stack: "Modelica", sans-serif;
+
+// [1] Body
+body {
+    font-size: 15px;
+    color: $font-color;
+    font-family: $body-stack;
+}
+
+// [2] Links
+a {
+    color: var(--primary-color, $primary);
+
+    &:hover {
+        color: var(--font-color, $font-color);
+    }
+}
+
+p {
+    line-height: 1.6;
+
+    ul,
+    ol {
+        line-height: inherit;
+    }
+}
+
+// [3] Headings
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: 0.4px;
+}
+
+.title {
+    font-family: $header-stack;
+    overflow: hidden;
+    @extend %accent;
+
+    // : H1.TITLE : //
+    @at-root h1#{&} {
+        font-size: 1.1rem;
+        text-transform: capitalize;
+
+        @include media(">=pc") {
+            font-size: 2rem;
+        }
+
+        &.center::after {
+            margin: 0.5rem auto 1rem auto;
+        }
+    }
+}
+
+.super-heading {
+    font-weight: 200;
+    font-size: 0.8rem;
+}
+
+
+body.home {
+    h2.title {
+        @extend %accent;
+    }
+    @include media(">=pc") {
+        h2.title {
+            font-size: 2.4rem;
+        }
+
+        .slide p {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.mast {
+    h2 {
+        line-height: 1;
+        font-size: 2.5em;
+    }
+
+    @include media(">=650px") {
+        .super-heading {
+            font-size: 0.9rem;
+        }
+        h2 {
+            font-size: 3.2rem;
+        }
+        .svg-btn span {
+            font-size: 1.1rem;
+        }
+    }
+    @include media(">=pc") {
+        .super-heading {
+            font-size: 1.1rem;
+        }
+        h2 {
+            font-size: 4.1rem;
+        }
+        .svg-btn span {
+            font-size: 1.25rem;
+        }
+    }
+}

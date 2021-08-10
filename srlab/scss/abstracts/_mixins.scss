@@ -1,0 +1,386 @@
+/**
+ * @file _mixins.scss
+ * Table of Contents:
+ * 01. wp-core-ui button
+ * 02. Link Controller
+ * 03. Link Controller
+ * 04. Responsive Flexible Grid
+ * 05. No offset box shadow
+ * 06. Offset box shadow
+ * 07. Postbox Styling
+ * 08. Line Height
+ * 09. Background Images
+ * 10. Absolute Elements
+ */
+////
+/// Grouped Mixins
+/// @group mix
+////
+
+/// Absolute Element
+/// @param {Bool} center [false] - center transform
+@mixin absolutes($center: false) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  @if $center == false {
+    top: 0;
+    left: 0;
+  }
+
+  @if $center == true {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
+}
+
+/// Gradient
+/// @param {Color} $color1 [primary] - Left color
+/// @param {Color} $color2 [secondary] - Right color
+/// @param {String} $deg [90deg]
+/// @param {Bool} $hover [false] - Enable color switch animation
+@mixin simple_gradient(
+  $color1: $primary,
+  $color2: $secondary,
+  $deg: 90deg,
+  $hover: false
+) {
+  background: linear-gradient(
+    to right,
+    $color1,
+    darken($color2, 10%),
+    $color2,
+    darken($color1, 3%)
+  );
+  background-position: 5% center;
+  background-size: 300% 300%;
+  border-color: transparent !important;
+  transition: background 400ms ease-in-out;
+
+  @if $hover {
+    &:hover {
+      color: #fff;
+      background-position: 99% 0;
+    }
+  }
+}
+
+/// Offset box shadow
+/// @param {number} $x [1] - X Axis
+/// @param {number} $y [1] - Y Axis
+/// @param {color} $color [#101010] - Shadow color
+/// @param {number(decimal)} $opacity [0.6] - Shadow opacity
+/// @param {number} $blur [4] - Blur amount
+@mixin offset_shadow($x: 2, $y: 2, $blur: 4, $spread: 0, $color: #030303, $opacity: 0.6) {
+  $x: $x * 1px;
+  $y: $y * 1px;
+  $blur: $blur * 1px;
+  $spread: $spread * 1px;
+  box-shadow: $x $y $blur $spread rgba($color, $opacity);
+}
+
+/// No offset box shadow
+/// @param {Color} $color [#888] - Shadow color
+/// @param {Number(decimal)} $opacity: [0.6] - Shadow opacity
+/// @param {Number} $blur [4] - Blur amount
+/// @param {Bool} $important [false] - Append !important
+@mixin no_offset_shadow(
+  $color: #888,
+  $opacity: 0.6,
+  $blur: 4,
+  $important: false
+) {
+  $blur: $blur * 1px;
+
+  @if $important == true {
+    -webkit-box-shadow: 0 0 $blur 0 rgba($color, $opacity) !important;
+    box-shadow: 0 0 $blur 0 rgba($color, $opacity) !important;
+  } @else {
+    -webkit-box-shadow: 0 0 $blur 0 rgba($color, $opacity);
+    box-shadow: 0 0 $blur 0 rgba($color, $opacity);
+  }
+}
+
+/// WP-Core UI Button
+@mixin wp_core_button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 2.15384615;
+  min-height: 30px;
+  margin: 0;
+  padding: 0 10px;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-appearance: none;
+  border-radius: 2px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:focus,
+  &:active {
+    @include no_offset_shadow(#000, 0.4, 4);
+    outline: 0;
+  }
+}
+
+/// Generate Adminmenu Button
+/// @param {Color} button-color - Background color
+/// @param {Color} button-text-color [#fff] - Button text color
+@mixin button($button-color, $button-text-color: #fff) {
+  background: $button-color;
+  border-color: $button-color;
+  color: $button-text-color;
+
+  &:hover,
+  &:focus {
+    background: lighten($button-color, 3%);
+    border-color: darken($button-color, 3%);
+    color: $button-text-color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 1px 0 $button-color;
+  }
+
+  &:active {
+    background: darken($button-color, 5%);
+    border-color: darken($button-color, 5%);
+    color: $button-text-color;
+  }
+
+  &.active,
+  &.active:focus,
+  &.active:hover {
+    background: $button-color;
+    color: $button-text-color;
+    border-color: darken($button-color, 15%);
+    box-shadow: inset 0 2px 5px -3px darken($button-color, 50%);
+  }
+}
+
+/// Link Controller
+/// @param {String} $font_size
+/// @param {Color} $color [primary]
+/// @param {String} $shadow [none]
+@mixin link_ctrl($font_size, $color: $primary, $shadow: none) {
+  $font-size: $font_size * 1px;
+  color: $color;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @if $font_size {
+    font-size: $font_size;
+  }
+
+  &:focus,
+  &:active,
+  &:hover {
+    color: darken($color, 20%);
+
+    @if $shadow == default {
+      box-shadow: 0 0 0 1px $primary, 0 0 2px 0px rgba($primary, 20%);
+    } @else {
+      box-shadow: $shadow;
+    }
+  }
+  &:focus,
+  &:active {
+    outline: 0;
+  }
+}
+
+/// Responsive Flexible Grid
+/// @param {Number} $min-col-width [200] - Minimum column width
+/// @param {Number} $max-cols [5] - Maximum columns
+/// @param {Number} $gap-size [15] - Gap size
+/// @param {String|Bool} $breakpt [false] - Breakpoint
+@mixin grid($min-col-width: 200, $max-cols: 5, $gap-size: 15, $breakpt: false) {
+  $break-point: $min-col-width * $max-cols + $gap-size * ($max-cols - 1) * 1px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-col-width * 1px, 1fr));
+  grid-gap: $gap-size * 1px;
+
+  @if $breakpt {
+    @include media($breakpt) {
+      grid-template-columns: repeat($max-cols, 1fr);
+    }
+  }
+}
+
+/// Postbox Styling
+/// @param {String(element)} $selector - Postbox ID
+@mixin postbox_style($selector) {
+  border: none;
+  box-shadow: $postbox-shadow;
+  background-color: #fff;
+
+  #{$selector} {
+    background-color: mix($primary, #ccc, 0.9);
+  }
+}
+
+/// Line Height
+/// @param {Number} $font_size
+/// @param {Number} $vpad - Vertical padding
+/// @param {Number} $hpad - Horizontal padding
+@mixin line_height($font_size, $vpad, $hpad) {
+  $border-height: 2px;
+  $font-size: $font_size * 1px;
+  $vpad: $vpad * 1px;
+  $hpad: $hpad * 1px;
+
+  @if $font-size <= 12px {
+    line-height: $vpad;
+  } @else {
+    line-height: $vpad;
+  }
+  font-size: $font-size;
+  padding: $vpad $hpad;
+}
+
+/// Background Images
+/// @param {String} Image-Path - Path to image
+/// @param {Color} Overlay [$primary] - Overlay color
+/// @param {String} Pos [center center] - Background positioning
+@mixin bg-images($img_path, $overlay-color: $primary, $pos: center center) {
+  animation: bgFadeIn 1s ease-in both;
+
+  &:before {
+    background: linear-gradient(
+        rgba($overlay-color, 0.85),
+        rgba($overlay-color, 0.1)
+      ),
+      url($img_path);
+    background-color: #fff;
+    background-attachment: fixed;
+    background-position: $pos;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    bottom: 0;
+    content: " ";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+}
+
+@mixin text-crop(
+  $line-height: 1.3,
+  $top-adjustment: 0px,
+  $bottom-adjustment: 0px
+) {
+  // Configured in Step 1
+  $top-crop: 10;
+  $bottom-crop: 15;
+  $crop-font-size: 41;
+  $crop-line-height: 1.4;
+
+  // Apply values to calculate em-based margins that work with any font size
+  $dynamic-top-crop: max(
+      ($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)),
+      0
+    ) / $crop-font-size;
+  $dynamic-bottom-crop: max(
+      (
+        $bottom-crop + ($line-height - $crop-line-height) *
+          ($crop-font-size / 2)
+      ),
+      0
+    ) / $crop-font-size;
+
+  // Mixin output
+  line-height: $line-height;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+  }
+
+  &::before {
+    margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
+  }
+
+  &::after {
+    margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
+  }
+}
+
+/// Radial Gradient
+/// @param {Color} Fallback [transparent] - Fallback Color
+/// @param {String} Outer-Color [$primary] - Outer Radial Color
+@mixin radial-gradient($fallback: transparent, $outer-color: $primary, $inner-color: $secondary) {
+  background: $fallback;
+  background: radial-gradient(
+    circle,
+    transparentize($inner-color, 0.3) 35%,
+    transparentize($outer-color, 0.3) 100%
+  );
+}
+
+/// Draw Button Border
+@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+  box-shadow: inset 0 0 0 $width $color;
+  color: $color;
+  transition: color $duration $duration/3;
+  position: relative;
+
+  &::before,
+  &::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0; height: 0;
+
+    #{$vertical}: 0;
+    #{$horizontal}: 0;
+  }
+
+  &::before {
+    $h-side: if($horizontal == 'left', 'right', 'left');
+
+    border-#{$vertical}-width: $width;
+    border-#{$h-side}-width: $width;
+  }
+
+  &::after {
+    $v-side: if($vertical == 'top', 'bottom', 'top');
+
+    border-#{$v-side}-width: $width;
+    border-#{$horizontal}-width: $width;
+  }
+
+  &:hover {
+    color: $hover;
+
+    &::before,
+    &::after {
+      border-color: $hover;
+      transition: border-color 0s, width $duration, height $duration;
+      width: 100%;
+      height: 100%;
+    }
+
+    &::before { transition-delay: 0s, 0s, $duration; }
+
+    &::after { transition-delay: 0s, $duration, 0s; }
+  }
+}

@@ -1,0 +1,32 @@
+@mixin lined_heading($thickness: 1, $width: 35, $display: inline-block) {
+    display: $display;
+    position: relative;
+
+    // : Accented : //
+    // acc--l (accent bottom left), acc--b (accent line bottom)
+    &.acc--l {
+        padding-left: $width + 10 * 1px;
+        &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+
+            content: "";
+            display: block;
+            background-color: var(--primary-color,$primary);
+            height: $thickness * 1px;
+            width: $width * 1px;
+        }
+    }
+
+    &.acc--b {
+        &::after {
+            margin: 0.25rem 0 0.5rem;
+            content: "";
+            display: block;
+            background-color: var(--primary-color,$primary);
+            height: $thickness * 1px;
+            width: $width * 1px;
+        }
+    }
+}
