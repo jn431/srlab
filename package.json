@@ -1,0 +1,15 @@
+{
+  "name": "themes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass --output-style compressed -rw srlab/scss/ -o srlab/assets/css/"
+  },
+  "keywords": [],
+  "author": "Jaein Lee <jaein@rebelgroupdigital.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^6.0.1"
+  }
+}
