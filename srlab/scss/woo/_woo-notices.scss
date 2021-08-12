@@ -1,45 +1,38 @@
-.woocommerce-notices-wrapper [role="alert"] {
-    margin-left: auto;
-    margin-right: auto;
-    background-color: var(--primary-color, $primary);
-    border: 1px solid var(--primary-color, $primary);
-    color: #fff;
-    font-weight: bold;
-    padding: 1.5rem;
-    border-radius: 5px;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-
-    @include media("<tablet") {
-        width: 88%;
-    }
-
-    @include media(">=tablet") {
-        width: 70%;
-        max-width: var(--gutter-compact, map-get($sizes, "compact-width"));
-    }
-}
-
 .woocommerce-notices-wrapper {
+    margin-bottom: 30px;
+
+    [role="alert"] {
+        background-color: var(--primary-color, #76a5af);
+        border-radius: 5px;
+        border: 1px solid var(--primary-color, #76a5af);
+        color: #2b434a;
+        font-size: 0.85rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.5rem;
+        text-transform: uppercase;
+
+        @include media("<tablet") {
+            width: 88%;
+        }
+
+        @include media(">=tablet") {
+            width: 70%;
+            max-width: var(--gutter-compact, map-get($sizes, "compact-width"));
+        }
+    }
+
+    a {
+        color: #000;
+    }
+
     ul {
         list-style: none;
     }
+
+    span.product-name {
+        color: #fff;
+    }
 }
-
-/* .woocommerce-notices-wrapper > div {
-   margin-left: auto;
-   margin-right: auto;
-   padding: 20px;
-   border: 1px solid var(--primary-color, $primary);
-   margin-top: 1.25rem;
-   border-radius: 5px;
-
-   @include media("<tablet") {
-       width: 88%;
-   }
-
-   @include media(">=tablet") {
-       width: 70%;
-       max-width: var(--gutter-compact, map-get($sizes, "compact-width"));
-   }
-} */

@@ -43,8 +43,9 @@ if (!class_exists('srlab\classes\Setup')) :
          $this->sr_create_homepage_slider();
          $this->sr_setup_footer_menus();
 
-         $this->Upload_Img("placeholders/image.jpg");
-         $this->Upload_Img("placeholders/mast.jpg");
+         $this->Upload_Img("orthodontics.png");
+         $this->Upload_Img("surgical-guides.png");
+         $this->Upload_Img("training.png");
          // ! New installation add option to database ! //
          add_option('sr_theme', true);
       }
@@ -151,19 +152,19 @@ if (!class_exists('srlab\classes\Setup')) :
          $opt =
             [
                0 => [
-                  "imageID"         => 38,
+                  "imageID"         => Utility::sr_get_attachment_by_name("orthodontics")->ID,
                   "main_heading"    => "Orthodontics",
                   "blurb"           => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis tellus id velit accumsan placerat non eu nisi. Morbi lacu,felis, auctor a lorem vel, facilisis pharetra nulla.",
                   "pages"           => [1 => 1, 2 => 2]
                ],
                1 => [
-                  "imageID"         => 38,
+                  "imageID"         => Utility::sr_get_attachment_by_name("surgical-guides")->ID,
                   "main_heading"    => "Surgical Guides",
                   "blurb"           => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis tellus id velit accumsan placerat non eu nisi. Morbi lacu,felis, auctor a lorem vel, facilisis pharetra nulla.",
                   "pages"           => [1 => 1, 2 => 2]
                ],
                2 => [
-                  "imageID"         => 38,
+                  "imageID"         => Utility::sr_get_attachment_by_name("training")->ID,
                   "main_heading"    => "Training And Education",
                   "blurb"           => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis tellus id velit accumsan placerat non eu nisi. Morbi lacu,felis, auctor a lorem vel, facilisis pharetra nulla.",
                   "pages"           => [1 => 1, 2 => 2]

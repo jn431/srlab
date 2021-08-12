@@ -2,3 +2,26 @@
  * > 404
  * Author: Jaein Lee
  */
+
+.error-404 {
+    .h1-404 {
+        display: block;
+        margin: 1rem auto 4rem auto;
+        max-width: 30vw;
+
+        .shadow {
+            fill: #52c8ec;
+        }
+    }
+
+    @include media("<tablet") {
+        p {
+            font-size: 1.15rem;
+        }
+    }
+    @include media(">=tablet") {
+        p {
+            font-size: 1.4rem;
+        }
+    }
+}

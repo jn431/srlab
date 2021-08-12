@@ -10,6 +10,7 @@ defined('ABSPATH') || exit;
 
 do_action('woocommerce_before_cart'); ?>
 
+<?php locate_template('woocommerce/progress-bar.php', true); ?>
 <div class="fl-300">
 	<form class="woocommerce-cart-form col" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
 		<?php do_action('woocommerce_before_cart_table'); ?>

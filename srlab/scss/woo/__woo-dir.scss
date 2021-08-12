@@ -32,3 +32,47 @@ mark {
         font-size: 12px;
     }
 }
+
+#order-progress {
+    display: flex;
+    margin-bottom: 2rem;
+    overflow: hidden;
+
+    div {
+        flex: 1;
+        padding: 10px 10px 10px 30px;
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        background-color: #eee;
+
+        &:first-of-type {
+            padding-left: 20px;
+        }
+
+        &:last-of-type span {
+            display: none;
+        }
+
+        span {
+            background-color: inherit;
+            display: block;
+            height: 35px;
+            position: absolute;
+            right: -10px;
+            top: 0;
+            transform: rotate(45deg);
+            width: 35px;
+            z-index: 1;
+            border-right: 2px solid white;
+            border-top: 2px solid white;
+            backface-visibility: hidden;
+        }
+
+        &.active {
+            background-color: var(--primary-color, map-get($generic, "green"));
+        }
+    }
+}

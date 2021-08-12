@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Utility
  * @package  srlab
@@ -32,7 +33,12 @@ if (!trait_exists('srlab\classes\Utility')) :
       public static function RenderSVG($filepathname)
       {
          $svg = $filepathname . '.svg';
-         echo file_get_contents($svg);
+         if (file_exists($svg)) {
+
+            echo file_get_contents($svg);
+         } else {
+            return;
+         }
       }
 
       /**
@@ -201,6 +207,16 @@ if (!trait_exists('srlab\classes\Utility')) :
          require_once(ABSPATH . 'wp-admin/includes/image.php');
          $attach_data = wp_generate_attachment_metadata($attach_id, $file);
          wp_update_attachment_metadata($attach_id, $attach_data);
+      }
+      /**
+       * Get attachment by post_name
+       * @param   string $name
+       * @return  \WP_Post|array
+       */
+      public static function sr_get_attachment_by_name($name)
+      {
+         $attachments = get_posts(['post_type' => 'attachment', 'name' => $name, 'posts_per_page' => 1, 'post_status' => 'inherit']);
+         return array_pop($attachments);
       }
 
       /**

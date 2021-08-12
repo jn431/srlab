@@ -38,6 +38,13 @@ input[type="checkbox"] {
   -moz-transform-origin: 0 0;
 }
 
+input:disabled, button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #859da4;
+  border-color: #859da4;
+}
+
 a.submit,
 [type="submit"] {
   @extend .pri--btn;

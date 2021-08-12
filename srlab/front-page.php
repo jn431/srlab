@@ -33,7 +33,7 @@ $slides = get_option("sr_fp_slider");
                   <?php if (!empty($slide['pages'])) : ?>
                      <div class="cta-links">
                         <?php foreach ($slide['pages'] as $id => $http) : ?>
-                           <a href="<?= esc_url(get_the_permalink($id)); ?>" class="btn"><?= get_the_title($id); ?></a>
+                           <a href="<?= esc_url(get_the_permalink($id)); ?>" class="b--sm"><?= get_the_title($id); ?></a>
                         <?php endforeach; ?>
                      </div>
                   <?php endif; ?>
@@ -44,7 +44,6 @@ $slides = get_option("sr_fp_slider");
          </div>
       <?php $ct = 1;
       endforeach;  ?>
-
    </section>
 </main>
 <?php get_footer(); ?>

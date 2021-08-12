@@ -6,21 +6,49 @@
 .product-card {
     background-color: #fafafa;
     border: 1px solid #f1f1f1;
-    min-height: 130px;
-    padding: 1rem;
     position: relative;
-    overflow: hidden;
+
+    > div {
+        display: flex;
+        height: 100%;
+        padding: 1rem 0;
+    }
+
+    .col {
+        padding: 0 1rem;
+
+        &:nth-of-type(1) {
+            align-items: center;
+            display: inline-flex;
+            flex: 0;
+            justify-content: center;
+
+            @include media(">=tablet") {
+                border-right: 1px solid var(--primary-color, $primary);
+            }
+        }
+
+        &:nth-of-type(2) {
+            flex-wrap: wrap;
+            display: inline-flex;
+            align-content: space-between;
+
+            @include media(">=tablet") {
+                padding-left: 1rem;
+            }
+        }
+    }
 
     h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+        font-weight: bold;
     }
+
     .price {
         font-weight: bold;
         line-height: 1;
-        padding: 1rem;
         text-align: center;
-
         .amount {
             font-size: 2rem;
         }
@@ -30,42 +58,30 @@
         }
     }
 
-    .product-detail {
-        padding: 1rem;
-    }
+    a {
+        display: inline-block;
 
-    .b--hero {
-        margin-top: 1rem;
-    }
-
-    @include media(">=pc") {
-        .product {
-            display: flex;
+        &.btn {
+            margin-top: 1rem;
         }
 
-        .price {
-            border-right: 1px solid var(--primary-color, $primary);
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: center;
+        &[rel="tag"] {
+            margin-bottom: 5px;
         }
     }
+
 }
 
 .product-category {
     border: 1px solid #ccc;
-    padding-bottom: 4rem;
+    overflow: hidden;
+    padding: 1rem;
 
     img {
         position: absolute;
+        bottom: 0;
+        height: 100%;
+        object-fit: cover;
         right: 0;
-        max-height: 100%;
-        top: 0;
-    }
-
-    .b--more {
-        position: absolute;
-        bottom: 1rem;
     }
 }

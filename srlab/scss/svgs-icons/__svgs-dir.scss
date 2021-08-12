@@ -2,37 +2,39 @@
 @import "draw-btn";
 
 .svg-btn {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
 }
 
 .draw-btn {
-  @include draw_btn;
+    @include draw_btn;
 }
 
 .svg-btn {
-  color: inherit;
+    color: inherit;
 }
 
 svg.circle-arrow {
-  margin-left: 5px;
+    margin-left: 5px;
 }
-.svg-account, .svg-bag, .svg-trash {
-  height: 25px;
+.svg-account,
+.svg-trash,.svg-bag {
+    height: 25px;
 }
 
-.svg-account, .svg-bag {
-  fill: var(--primary-color, $primary);
+.svg-account,
+.svg-bag {
+    fill: var(--primary-color, $primary);
 
-  &:hover {
-    fill: var(--font-color, $font-color);
-  }
+    &:hover {
+        fill: var(--font-color, $font-color);
+    }
 }
 
 .svg-trash {
-  stroke-width:10px;
-  stroke: #000;
-  fill: transparent;
+    stroke-width: 10px;
+    stroke: #000;
+    fill: transparent;
 }

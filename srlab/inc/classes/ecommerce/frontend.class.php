@@ -30,9 +30,11 @@ if (!class_exists('srlab\classes\Ecommerce\Frontend')) :
 			remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);                       // Hide orderby
 			add_filter('woocommerce_sale_flash', '__return_false');                                               	// Hide sale badge
 			remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');									// Hide cross sell on cart page
-			// Test
-			remove_action( 'woocommerce_before_cart', 'woocommerce_output_all_notices', 10 );
-			add_action( 'before_page_content', 'woocommerce_output_all_notices', 10 );
+
+			remove_action('woocommerce_before_cart', 'woocommerce_output_all_notices', 10);
+			add_action('before_page_content', 'woocommerce_output_all_notices', 10);
+
+			add_filter('woocommerce_add_to_cart_fragments', [$this, 'sr_add_to_cart_fragment']);
 		}
 
 		public function sr_single_product_display()
@@ -45,6 +47,23 @@ if (!class_exists('srlab\classes\Ecommerce\Frontend')) :
 			remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);	    // [2.1] Remove add to cart input
 			remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);					// Remove category
 			remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);        	// Remove star reviews under title
+
+			add_filter( 'wc_add_to_cart_message', [$this, 'sr_added_cart_notice'], 10, 2 );
+		}
+
+		public function sr_add_to_cart_fragment($fragments)
+		{
+
+			global $woocommerce;
+
+			$fragments['.cart-count'] = "<span class='cart-count'>" . $woocommerce->cart->cart_contents_count . "</span>";
+			return $fragments;
+		}
+
+		public function sr_added_cart_notice($message, $product_id)
+		{
+			$message = sprintf('<span class="product-name"> %s </span> has been added by to your cart.', get_the_title($product_id));
+			return $message;
 		}
 	} // End Class
 endif;

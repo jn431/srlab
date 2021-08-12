@@ -51,19 +51,15 @@ body {
 // [2] Links
 a {
     color: var(--primary-color, $primary);
+    text-decoration: none;
 
-    &:hover {
+    &:hover, &:active {
         color: var(--font-color, $font-color);
     }
 }
 
 p {
     line-height: 1.6;
-
-    ul,
-    ol {
-        line-height: inherit;
-    }
 }
 
 // [3] Headings
@@ -72,6 +68,10 @@ h2,
 h3,
 h4 {
     letter-spacing: 0.4px;
+}
+
+strong {
+    font-weight: bold;
 }
 
 .title {
@@ -98,7 +98,6 @@ h4 {
     font-weight: 200;
     font-size: 0.8rem;
 }
-
 
 body.home {
     h2.title {

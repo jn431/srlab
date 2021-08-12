@@ -104,6 +104,11 @@ if (!class_exists('srlab\classes\Theme')) {
          if (function_exists('is_woocommerce')) {
             if (is_account_page()) {
                $extra_classes[] = "myaccount";
+            } else if (is_cart()) {
+
+               $extra_classes[] = "cart";
+            } else if (is_checkout()) {
+               $extra_classes[] = "checkout";
             }
          }
          $whitelist = [

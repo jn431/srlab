@@ -72,6 +72,5 @@ if (!class_exists('srlab\classes\Ecommerce')) :
 			wp_deregister_style('woocommerce_admin_marketplace_styles');
 		}
 
-
 	} // End Class
 endif;

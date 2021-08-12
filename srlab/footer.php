@@ -13,7 +13,7 @@ $menus = get_option('sr_footer_menus')['menu'];
 	<section class="pd">
 		<div class="grid gr-4 contain">
 			<div class="col">
-				<?php Utility::RenderSVG(IMG_DIR . "logo"); ?>
+				<?php Utility::RenderSVG(THEME_PATH . "assets/images/logo"); ?>
 			</div>
 			<?php for ($i = 0; $i <= 1; $i++) : ?>
 				<div class="col">

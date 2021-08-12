@@ -9,17 +9,18 @@
 defined('ABSPATH') || exit;
 
 global $product;
-do_action('woocommerce_before_single_product');
 
 if (post_password_required()) {
 	echo get_the_password_form(); // WPCS: XSS ok.
 	return;
 } ?>
 <section class="pd">
+	<?php do_action('woocommerce_before_single_product'); ?>
+
 	<div class="compact">
 		<div class="breadcrumbs"><?php woocommerce_breadcrumb(); ?></div>
 		<section id="product-<?php the_ID(); ?>" <?php wc_product_class('content', $product); ?>>
-		<div class="item-detail">
+			<div class="item-detail">
 				<?php do_action('woocommerce_single_product_summary'); ?>
 				<div class="description">
 					<?php the_content(); ?>
@@ -29,8 +30,8 @@ if (post_password_required()) {
 				do_action('woocommerce_before_single_product_summary');
 				do_action('woocommerce_after_single_product');
 				do_action('woocommerce_single_product_pricing');
-				// upsell_display/ output_related_products
-				//do_action('woocommerce_after_single_product_summary');
+				// * upsell_display/ output_related_products
+				// do_action('woocommerce_after_single_product_summary');
 				?>
 			</div>
 

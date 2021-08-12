@@ -4,7 +4,9 @@ button {
 
 /// @group button
 /// : Button Base
-.b-cta, .b-ico, .btn {
+.b-cta,
+.b-ico,
+.btn {
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
@@ -12,17 +14,22 @@ button {
     cursor: pointer;
 }
 
-a.btn {
-    text-decoration: none;
-}
-
 a.--overlay {
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .rnd {
     border-radius: 100px;
+}
+
+.btn {
+    text-decoration: none;
+    border-width: 1px;
+    border-style: solid;
 }
 
 /// @group button
@@ -37,8 +44,8 @@ top: 0; left: 0; right: 0; bottom: 0;
 /// Primary color - white text
 /// Hover gray - white text
 .pri--btn {
-    background-color: var(--primary-color,$primary);
-    border-color: var(--primary-color,$primary);
+    background-color: var(--darken-primary-color, $primary);
+    border-color: var(--darken-primary-color, $primary);
     color: #fff; // background color
     transition: all 100ms ease-in-out;
 
@@ -56,8 +63,8 @@ top: 0; left: 0; right: 0; bottom: 0;
 /// Hover gray - white text
 .sec--btn {
     background-color: transparent;
-    border: 1px solid var(--secondary-color, $primary);
-    color: var(--secondary-color, $primary); // background color
+    border: 1px solid var(--darken-primary-color, $primary);
+    color: var(--darken-primary-color, $primary); // background color
     transition: all 100ms ease-in-out;
 
     &:hover {
@@ -74,8 +81,8 @@ top: 0; left: 0; right: 0; bottom: 0;
 /// Hover gray
 .ter--btn {
     background-color: transparent;
-    border-color: var(--primary-color,$primary);
-    color: var(--primary-color,$primary);
+    border-color: var(--primary-color, $primary);
+    color: var(--primary-color, $primary);
     transition: all 100ms ease-in-out;
 
     &:hover {
@@ -108,20 +115,22 @@ top: 0; left: 0; right: 0; bottom: 0;
 /// Hover gray - white text
 .fill--btn {
     background-color: transparent;
-    border-color: var(--primary-color,$primary);
-    color: var(--primary-color,$primary);
+    border-color: var(--primary-color, $primary);
+    color: var(--primary-color, $primary);
     transition: all 100ms ease-in-out;
 
     &:hover {
-        background-color: var(--primary-color,$primary);
+        background-color: var(--primary-color, $primary);
         color: #fff; // background color
     }
 }
 
 .draw--btn {
     @include btn-border-drawing(#58afd1, #ffe593, 4px, bottom, right);
-    &:focus { outline: 2px dotted #55d7dc; }
-  }
+    &:focus {
+        outline: 2px dotted #55d7dc;
+    }
+}
 .rm-chev-right {
     display: inline-flex;
     align-items: center;
@@ -133,7 +142,7 @@ top: 0; left: 0; right: 0; bottom: 0;
     &::after {
         content: "\f345";
         align-items: center;
-        background-color: var(--primary-color,$font-color);
+        background-color: var(--primary-color, $font-color);
         color: #fff;
         display: inline-flex;
         font-family: dashicons;
@@ -148,6 +157,6 @@ top: 0; left: 0; right: 0; bottom: 0;
 
     &:hover::after {
         background-color: #f1f1f1;
-        color: var(--primary-color,$font-color);
+        color: var(--primary-color, $font-color);
     }
 }
