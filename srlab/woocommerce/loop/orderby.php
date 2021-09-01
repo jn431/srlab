@@ -5,15 +5,12 @@
  * @package		srlab
  * @version    3.6.0
  */
-
 defined('ABSPATH') || exit; ?>
-
 <?php do_action('srlab_filters'); ?>
-
 <form class="woocommerce-ordering" method="get">
 	<select name="orderby" class="orderby" aria-label="<?php esc_attr_e('Shop order', 'woocommerce'); ?>">
 		<?php foreach ($catalog_orderby_options as $id => $name) : ?>
-			<option value="<?php echo esc_attr($id); ?>" <?php selected($orderby, $id); ?>><?php echo esc_html($name); ?></option>
+			<option value="<?= esc_attr($id); ?>" <?php selected($orderby, $id); ?>><?= esc_html($name); ?></option>
 		<?php endforeach; ?>
 	</select>
 	<input type="hidden" name="paged" value="1" />

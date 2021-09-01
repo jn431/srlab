@@ -6,24 +6,20 @@
 	background: $button-color;
 	border-color: $button-color;
 	color: $button-text-color;
-
 	&:hover,
 	&:focus {
 		background: lighten( $button-color, 3% );
 		border-color: darken( $button-color, 3% );
 		color: $button-text-color;
 	}
-
 	&:focus {
 		box-shadow: 0 0 1px 0 $button-color;
 	}
-
 	&:active {
 		background: darken( $button-color, 5% );
 		border-color: darken( $button-color, 5% );
 		color: $button-text-color;
 	}
-
 	&.active,
 	&.active:focus,
 	&.active:hover {

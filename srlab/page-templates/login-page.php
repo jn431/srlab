@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Template Name: Login page
  */
@@ -10,11 +9,10 @@ if (is_user_logged_in()) {
 get_header();
 ?>
 <main id="login-page">
-	<section class="pd">
-		<div class="compact">
-			<h1 class="center title">Login</h1>
-			<?php wp_login_form(); ?>
-		</div>
+	<section class="sect pd">
+		<h1 class="visually-hidden">Login</h1>
+		<?php get_template_part('woocommerce/myaccount/form', 'login'); ?>
+		<?php get_template_part('woocommerce/myaccount/form', 'signup'); ?>
 	</section>
 </main>
 <?php

@@ -1,15 +1,11 @@
 <?php
-
 /**
  * Template Class
  * @package  srlab
  * @author   Jaein Lee
  */
-
 namespace srlab\classes;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\Template')) {
    class Template
    {
@@ -17,7 +13,9 @@ if (!class_exists('srlab\classes\Template')) {
       {
          add_action('theme_social_media', [$this, 'sr_social_icons']);
       }
-
+      /**
+       * Display Social Media Icons
+       */
       public function sr_social_icons()
       {
          $platforms = get_option('sr_social');

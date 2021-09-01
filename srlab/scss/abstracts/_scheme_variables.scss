@@ -4,73 +4,56 @@
 /// @group 2colorscheme
 /// color_scheme.css used for backend
 ////
-
 /// Admin Background Color Override
 /// @type Color
 /// @require $backgrounds
 $body-background: map-get($bgs, "body");
-
 /// @type Color
 /// @require $primary
 $highlight-color: if($high-contrast == false, lighten($primary, 15%), darken($primary, 15%));
-
 /// Icon Color
 /// @type Color
 /// @require $desat
 $icon-color: if($high-contrast == false, hsl(hue($primary), 15%, 80%), hsl(hue($primary), 7%, 90%));
-
 $link-focus: lighten(map-get($links, "default"), 10%);
-
 /// Checked Color
 /// @type Color
 /// @require $primary
 $form-checked: $primary;
-
 // * Defaults Below * //
 $text-color: #fff !default;
 $icon-color: hsl(hue($primary), 7%, 95%) !default;
 $highlight-color: #0073aa !default;
 $notification-color: #d54e21 !default;
-
 $button-color: $highlight-color !default;
 $button-text-color: $text-color !default;
-
 // [7.3] Admin menu & admin Bar
 $menu-text: $text-color !default;
 $menu-icon: $icon-color !default;
 $menu-background: $primary !default;
-
 $menu-highlight-text: $text-color !default;
 $menu-highlight-icon: if($high-contrast == false, hsl(hue($primary), 15%, 100%), $primary);
 $menu-highlight-background: $highlight-color !default;
-
 $menu-current-text: $menu-highlight-text !default;
 $menu-current-icon: $menu-highlight-icon !default;
 $menu-current-background: $menu-highlight-background !default;
-
 $menu-submenu-text: mix($primary, $text-color, 30%) !default;
 $menu-submenu-background: darken(map-get($adminmenu, "bg"), 5%);
 $menu-submenu-background-alt: desaturate(lighten(map-get($adminmenu, "bg"), 7%), 7%) !default;
-
 //$menu-submenu-focus-text: $text-color !default;
 $menu-submenu-focus-text: $menu-highlight-icon;
 $menu-submenu-current-text: $text-color !default;
-
 $menu-bubble-text: $text-color !default;
 $menu-bubble-background: $notification-color !default;
 $menu-bubble-current-text: $text-color !default;
 $menu-bubble-current-background: $menu-submenu-background !default;
-
 $menu-collapse-text: $menu-icon !default;
 $menu-collapse-icon: $menu-icon !default;
 $menu-collapse-focus-text: $text-color !default;
 $menu-collapse-focus-icon: $menu-highlight-icon !default;
-
 $adminbar-avatar-frame: lighten(map-get($adminmenu, "bg"), 7%) !default;
 $adminbar-input-background: lighten(map-get($adminmenu, "bg"), 7%) !default;
-
 $adminbar-recovery-exit-text: $menu-bubble-text !default;
 $adminbar-recovery-exit-background: $menu-bubble-background !default;
 $adminbar-recovery-exit-background-alt: mix(black, $adminbar-recovery-exit-background, 10%) !default;
-
 $menu-customizer-text: mix($primary, $text-color, 40%) !default;

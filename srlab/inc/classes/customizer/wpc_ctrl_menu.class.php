@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Custom Controller
  * Type: dropdown_navmenus
@@ -7,17 +6,13 @@
  * @author   Jaein Lee
  * @version  1.06
  */
-
 namespace srlab\classes\Customizer;
-
 defined('ABSPATH') || exit;
-
 if (class_exists('WP_Customize_Control')) :
    class WP_Customize_Menu extends \WP_Customize_Control
    {
       public $type = 'dropdown_navmenus';
       protected $menus = [];
-
       /**
        * Construct
        */
@@ -30,7 +25,6 @@ if (class_exists('WP_Customize_Control')) :
             $this->menus[$menu->slug] = $menu->name;
          }
       }
-
       /**
        * Render Dropdown
        */

@@ -1,9 +1,7 @@
 <?php
-
 $size = isset($posted['mobile-button-size']) ? $posted['mobile-button-size'] : 50; // default: 50
 $viewBox = $size * 2; // default: 50 * 2
 $radius = $size - 10;
-
 ?>
 <button type="button" class="wrap" id="mob-btn">
    <div class="stack">

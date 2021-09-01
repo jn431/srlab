@@ -2,7 +2,74 @@
     width: 100%;
     display: block;
 }
-
+.woocommerce-privacy-policy-text {
+    font-size: 12px;
+}
+.shipping_address + .woocommerce-additional-fields {
+    margin-top: 15px;
+}
 .payment_methods {
+    display: flex;
+    flex-wrap: wrap;
     list-style: none;
+    gap: 20px;
+
+    li {
+        flex-basis: 25%;
+    }
+
+    label {
+        display: block;
+        border-left-style: solid;
+        border-left-width: 4px;
+        cursor: pointer;
+        font-size: 12.5px;
+        height: 100%;
+        padding: 10px;
+    }
+    .payment-name {
+        font-weight: bold;
+    }
+    input {
+        display: none;
+    }
+    input:checked + label {
+        border-left-color: map-get($generic, "green");
+        background-color: #e8f3de;
+    }
+}
+#order-overview {
+    display: flex;
+    h4 {
+        color: #a1a7b9;
+        font-weight: bold;
+    }
+    div {
+        flex: 1;
+    }
+}
+// #RS Review Summary
+.rs-label {
+    font-weight: bold;
+}
+.rs-label, .rs-value {
+    padding: 0.5em 0;
+}
+.rs-value {
+    text-align: right;
+}
+#cart-subtotal {
+    border-top: 1px solid #000;
+    margin-top: 50px;
+    padding-top: 20px;
+}
+.step-ctrl {
+    margin-top: 50px;
+}
+.checkout .step {
+    display: none;
+}
+
+.input.invalid {
+    border-color: map-get($generic, "red");
 }

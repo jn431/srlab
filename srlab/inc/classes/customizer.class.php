@@ -4,21 +4,15 @@
  * @package  srlab
  * @author   Jaein Lee
  */
-
 namespace srlab\classes;
-
 require "customizer/wpc_ctrl_menu.class.php";
 use srlab\classes\Utility;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\Customizer')) :
    class Customizer
    {
       use Utility;
-
       //public static $variable;
-
       public function __construct()
       {
          add_action("customize_controls_enqueue_scripts", [$this, 'wpc_customizer_js']);  // Do not edit
@@ -28,7 +22,6 @@ if (!class_exists('srlab\classes\Customizer')) :
          add_action("customize_register", [customizer\WPC_Footer::class, 'sr_wpc_footer']);
          add_action("customize_register", [customizer\WPC_Social::class, 'sr_wpc_social']);
       }
-
       /**
        * WPC Customize.JS
        */
@@ -37,7 +30,6 @@ if (!class_exists('srlab\classes\Customizer')) :
          // * customizer.js * //
          wp_enqueue_script('customizer', JS_DIR . 'customizer' . SUFFIX . '.js', ['jquery', 'customize-controls'], VERSION, true);
       }
-
       /**
        * WPC Customize-Preview.JS
        */
@@ -46,7 +38,6 @@ if (!class_exists('srlab\classes\Customizer')) :
          // * customizer-preview.js * //
          wp_enqueue_script('customizer-previewer', JS_DIR . 'customizer-preview' . SUFFIX . '.js', ['jquery', 'customize-preview'], VERSION, true);
       }
-
       /**
        * WPC Hide
        * @param  object $wp_customize
@@ -56,7 +47,6 @@ if (!class_exists('srlab\classes\Customizer')) :
          $wp_customize->remove_section('custom_css');
          $wp_customize->remove_section('static_front_page');
       }
-
       /**
        * Validate URL
        * @param bool $validity

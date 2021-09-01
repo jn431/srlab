@@ -1,0 +1,23 @@
+.wapf-field-row + .wapf-field-row {
+    margin-top: 1.5rem;
+}
+.wapf--inner > div {
+    display: flex;
+    span {
+        flex: 1;
+    }
+    .price {
+        text-align: right;
+    }
+}
+.wapf-product-totals {
+    margin-top: 2rem;
+}
+.wapf-field-label {
+   margin-bottom: 4px;
+}
+.wapf-field-input {
+   input, textarea, select {
+      padding: map-get($inputs, "small");
+   }
+}

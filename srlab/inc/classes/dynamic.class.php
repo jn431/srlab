@@ -1,15 +1,11 @@
 <?php
-
 /**
  * Dynamic Class
  * @package srlab
  * @author Jaein Lee
  */
-
 namespace srlab\classes;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\Dynamic')) :
 	class Dynamic
 	{
@@ -18,7 +14,6 @@ if (!class_exists('srlab\classes\Dynamic')) :
 			add_action('wp_enqueue_scripts', [$this, 'sr_root_vars']);
 			add_action('wp_enqueue_scripts', [$this, 'sr_mast']);
 		}
-
 		public function sr_root_vars()
 		{
 			ob_start(); ?>
@@ -29,7 +24,7 @@ if (!class_exists('srlab\classes\Dynamic')) :
 			--darken-primary-color: hsla(194, 60%, 42%, 1);
 			--lighten-primary-color: hsla(194, 60%, 72%, 1);
 			--primary-hsl: 194, 100%, 62%;
-			--gutter-compact: 1200px;
+			--gutter-compact: 1100px;
 			--gutter-contain: 88%;
 			--header-height: 70px;
 			}
@@ -38,7 +33,6 @@ if (!class_exists('srlab\classes\Dynamic')) :
 			ob_end_clean();
 			wp_add_inline_style('theme-style', $css);
 		} // --- Dynamic Root Vars --- //
-
 		public function sr_mast()
 		{
 			if (is_front_page()) {

@@ -6,11 +6,9 @@
  * 03. Postbox
  * 04. Red Hover
  */
-
 ////
 /// @group ph
 ////
-
 // [1] Dashicons
 %dashicons {
    speak: none;
@@ -19,14 +17,12 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
 }
-
 %user_select_none {
    -webkit-user-select: none;
    -moz-user-select: none;
    -ms-user-select: none;
    user-select: none;
 }
-
 %accent {
    position: relative;
    &::after {
@@ -38,18 +34,15 @@
        background-color: var(--primary-color, #76a5af);
    }
 }
-
 // [3] Postbox
 %postbox {
    @include no_offset_shadow($color: darken(map-get($bgs, "body"), 30%), $opacity: 0.5);
    background-color: map-get($bgs, "post");
    border: 1px solid darken(map-get($bgs, "body"), 10%);
 }
-
 %hide {
    display: none;
 }
-
 // [4] Box Header
 %box-header {
    border-bottom: 1px solid mix($primary, #ccc, 30%);
@@ -60,13 +53,11 @@
    font-weight: 500;
    line-height: 1.4;
 }
-
 // [5] Row Title
 %row_title {
    color: $primary;
    text-transform: uppercase;
    transition: none;
-
    &:hover {
       color: lighten($primary, 20%);
    }

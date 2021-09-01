@@ -1,35 +1,23 @@
 .woocommerce-breadcrumb {
     margin-bottom: 1.5rem;
 }
-
 body.single {
     .price,
     .description {
         margin-bottom: 1rem;
     }
-
     .price {
         font-size: 1.5rem;
         position: relative;
     }
-
     .description {
         border: 1px solid #f6f6f6;
         background-color: #f6f6f6;
         padding: 10px;
     }
-
     .woocommerce-variation {
         > div {
             margin-bottom: 1rem;
         }
     }
-
-    /* .variations {
-        label {
-            font-size: 0.95rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-    } */
 }

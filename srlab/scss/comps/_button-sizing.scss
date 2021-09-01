@@ -4,24 +4,21 @@
     padding: 14px 28px;
     letter-spacing: 0.03em;
 }
-
 /// @group button-sizes
 /// Read more and secondary size
 .b--more {
     display: inline-flex;
     padding: 10px 16px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.025em;
 }
-
 /// @group button-sizes
 /// Very small button
 .b--sm {
     display: inline-flex;
     padding: 6px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.025em;
     font-size: 0.85rem;
 }
-
 /// @group button-sizes
 /// : Icon Circle Average
 .ico--med {
@@ -31,7 +28,6 @@
    border-radius: 1.1rem;
    font-size: 1.1rem;
 }
-
 /// @group button-sizes
 /// : Icon Circle Large
 .ico--lrg {

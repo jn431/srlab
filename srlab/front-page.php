@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package    srlab
  * @author     Jaein Lee
@@ -7,7 +6,6 @@
 get_header();
 $slides = get_option("sr_fp_slider");
 ?>
-
 <main>
    <section class='fp-slider'>
       <?php
@@ -40,7 +38,6 @@ $slides = get_option("sr_fp_slider");
                </div>
                <div class="img-wrap"><?= wp_get_attachment_image($slide['imageID'], "full"); ?></div>
             </div><!-- Contain -->
-
          </div>
       <?php $ct = 1;
       endforeach;  ?>

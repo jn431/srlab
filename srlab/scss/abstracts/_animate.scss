@@ -8,21 +8,17 @@
  * 05. slide_up
  * 06. spinner
  */
-
 ////
 /// @group animate
 ////
-
 @keyframes fadein {
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
 }
-
 @keyframes fade_out {
     0% {
         opacity: 1;
@@ -31,7 +27,6 @@
         opacity: 0;
     }
 }
-
 /// Elastic
 /// @param {String} $direction [up] - up/down/left/right
 @mixin elastic($direction) {
@@ -58,9 +53,7 @@
       @keyframes elastic_up {
           0% {
               //-webkit-transform: translateY(1200px) scale(0.7);
-
               //transform: translateY(1200px) scale(0.7);
-
           }
           20% {
             opacity: 0;
@@ -68,15 +61,12 @@
           to {
             -webkit-transform: translateX(0%) perspective(1px);
             transform: translateX(0%) perspective(1px);
-
               opacity: 1;
           }
       }
   } // --- elastic up --- //
 }
-
 @include elastic("left");
-
 /// Fade Up/Down
 @mixin fade_directional {
     @keyframes fade_down {
@@ -92,7 +82,6 @@
         }
     }
 }
-
 /// Slide Up
 @mixin slide_up {
     @keyframes slide_up {

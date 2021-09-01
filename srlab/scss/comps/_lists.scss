@@ -1,14 +1,12 @@
 ul.list {
-    list-style-position: inside;
     list-style: none;
-
     li {
         background-image: url(../svgs/chev-right.svg);
         background-repeat: no-repeat;
         background-position: left;
         background-size: 10px 10px;
         padding-left: 15px;
-        line-height: 1.75;
+        line-height: 1.5;
     }
 }
 

@@ -2,3 +2,47 @@
  * > Pages
  * Author: Jaein Lee
  */
+/* #contact {
+    h2 {
+        font-size: 3.5rem;
+        &::after {
+            content: "";
+            width: 105px;
+            height: 3px;
+            background-color: var(--primary-color, $primary);
+            display: block;
+            margin: 0.15rem 0 2rem 0;
+        }
+    }
+    h3 {
+        margin-bottom: 0.25rem;
+        font-weight: bold;
+    }
+    .col {
+        flex: 1;
+    }
+} */
+ul.info {
+    list-style: none;
+    margin-top: 1.5rem;
+    li {
+        letter-spacing: 0.025em;
+        margin: 0.8rem 0;
+    }
+    a {
+        display: flex;
+        align-items: center;
+        color: $font-color;
+        &:hover, &:active {
+            svg {
+                fill: var(--darken-primary-color, $primary);
+            }
+        }
+    }
+    svg {
+        margin: 4px 8px 4px 4px;
+        height: 28px;
+        fill: var(--primary-color, $primary);
+        transition: all 170ms ease-in-out;
+    }
+}

@@ -1,19 +1,14 @@
 <?php
-
 /**
  * Page /shop PRODUCT LOOP
  * @package    srlab
  * @version    3.6.0
  */
-
 defined('ABSPATH') || exit;
-
 global $product;
-
 if (empty($product) || !$product->is_visible())
    return;
 ?>
-
 <div class="product-card">
    <div <?php wc_product_class('', $product); ?>>
       <div class="col">

@@ -1,40 +1,49 @@
 @import "circle-play";
 @import "draw-btn";
-
 .svg-btn {
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     position: relative;
 }
-
 .draw-btn {
     @include draw_btn;
 }
-
 .svg-btn {
     color: inherit;
 }
-
 svg.circle-arrow {
     margin-left: 5px;
 }
 .svg-account,
-.svg-trash,.svg-bag {
+.svg-trash,
+.svg-bag {
     height: 25px;
 }
-
 .svg-account,
 .svg-bag {
     fill: var(--primary-color, $primary);
-
     &:hover {
         fill: var(--font-color, $font-color);
     }
 }
-
 .svg-trash {
     stroke-width: 10px;
     stroke: #000;
     fill: transparent;
+}
+.svg-env {
+    width: 100px;
+    display: block;
+    line {
+        fill: none;
+        stroke-width: 4;
+        stroke: #305c69;
+    }
+    .line {
+        fill: #305c69;
+    }
+    path {
+       // fill: #6e6e6e
+    }
 }

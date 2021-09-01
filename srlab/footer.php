@@ -1,12 +1,9 @@
 <?php
-
 use srlab\classes\Utility;
-
 /**
  * @package    srlab
  * @author     Jaein Lee
  */
-
 $menus = get_option('sr_footer_menus')['menu'];
 ?>
 <footer>
@@ -36,13 +33,12 @@ $menus = get_option('sr_footer_menus')['menu'];
 				</div>
 			<?php endfor; ?>
 			<div class="col">
-
 				<?php do_action('theme_social_media'); ?>
 			</div>
 		</div>
 	</section>
 	<section id="copyright">
-		<div class="contain l-2">
+		<div class="contain fl-wrap l-2">
 			<div class="col"><?= get_bloginfo('name') . " &copy; " . date('Y'); ?></div>
 			<div class="col privacy">
 				<a href="<?php echo esc_attr(esc_url(get_privacy_policy_url())); ?>"><?php esc_html_e('Privacy Policy', 'srlab') ?></a>
@@ -52,5 +48,4 @@ $menus = get_option('sr_footer_menus')['menu'];
 </footer>
 <?php wp_footer(); ?>
 </body>
-
 </html>

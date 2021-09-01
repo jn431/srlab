@@ -10,57 +10,75 @@
  */
 // [1] Clear inner floats
 .clearfix::after {
-   content: "";
-   clear: both;
-   display: table;
+    content: "";
+    clear: both;
+    display: table;
 }
-
 // [2] Visually Hidden
 .visually-hidden,
 .hidden {
-   position: absolute;
-   -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
-   border: 0;
-   clip-path: inset(0px 0px 99.9% 99.9%);
-   clip: rect(1px, 1px, 1px, 1px);
-   height: 1px;
-   overflow: hidden;
-   padding: 0;
-   width: 1px;
+    position: absolute;
+    -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+    border: 0;
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    width: 1px;
 }
-
+.contain,
+.compact,
+.slim {
+    margin-left: auto;
+    margin-right: auto;
+}
 .contain {
-   width: var(--gutter-contain, map-get($sizes, "contain-width"));
-   margin-left: auto;
-   margin-right: auto;
+    width: var(--gutter-contain, map-get($sizes, "contain-width"));
 }
-
 .compact {
-   margin-left: auto;
-   margin-right: auto;
-
-   @include media("<tablet") {
-      width: 88%;
-   }
-
-   @include media(">=tablet") {
-      width: 70%;
-      max-width: var(--gutter-compact, map-get($sizes, "compact-width"));
-   }
+    @include media("<tablet") {
+        width: 88%;
+    }
+    @include media(">=tablet") {
+        width: 70%;
+        max-width: var(--gutter-compact, map-get($sizes, "compact-width"));
+    }
 }
-
+.slim {
+    width: 320px;
+    @include media(">=650px") {
+        width: 400px;
+    }
+}
 .pd {
-   @include media("<tablet") {
-      padding: 25px 0;
-   }
-   @include media(">=tablet", "<desktop") {
-      padding: 40px 0;
-   }
-   @include media(">=desktop") {
-      padding: 60px 0;
-   }
+    @include media("<tablet") {
+        padding: 24px 0;
+    }
+    @include media(">=tablet", "<desktop") {
+        padding: 35px 0;
+    }
+    @include media(">=desktop") {
+        padding: 50px 0;
+    }
 }
-
-section.pd + .pdc {
-   padding-top: 0;
+.sect {
+    display: grid;
+    grid-template-columns: 1fr;
+    @include media("<tablet") {
+        gap: 32px;
+    }
+    @include media(">=tablet") {
+        gap: 50px;
+    }
+}
+.stack {
+    display: flex;
+    gap: 18px;
+    flex-direction: column;
+    @include media(">=tablet") {
+        [type="submit"] {
+            align-self: baseline;
+        }
+    }
 }

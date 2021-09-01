@@ -1,61 +1,70 @@
 @import "../helpers/bp";
 @import "woo-account";
 @import "woo-cart";
+@import "woo-checkout";
+@import "woo-forms";
 @import "woo-inputs";
 @import "woo-notices";
 @import "woo-productcard";
 @import "woo-single";
-@import "woo-checkout";
+@import "wapf";
+@import "woo-margins";
 
 .add-cart-wrap {
-    display: inline-flex;
+    display: flex;
+    gap: 12px;
     [type="submit"] {
-        background-color: var(--anchor-color, #76a5af);
+        background-color: var(--anchor-color, $primary);
         border-radius: 2px;
-        border: 1px solid var(--anchor-color, #76a5af);
+        border: 1px solid var(--anchor-color, $primary);
         color: #fff;
         font-weight: bold;
-        letter-spacing: 1px;
         margin-left: 5px;
         padding: 6px 12px;
         text-transform: uppercase;
+        &:hover,
+        &:active {
+            background-color: transparent;
+            border-color: var(--anchor-color, $primary);
+            color: var(--anchor-color, $primary);
+        }
     }
 }
-
+main.ecommerce {
+    ul {
+        list-style: none;
+    }
+}
 .woocommerce-ordering {
     margin-bottom: 1.5rem;
 }
-
 mark {
     background-color: transparent;
     &.count {
         font-size: 12px;
     }
 }
-
 #order-progress {
     display: flex;
-    margin-bottom: 2rem;
     overflow: hidden;
-
+    margin-bottom: 40px;
     div {
         flex: 1;
         padding: 10px 10px 10px 30px;
         font-size: 12px;
         font-weight: bold;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
         position: relative;
-        background-color: #eee;
+        background-color: var(--primary-color, map-get($generic, "green"));
+        transition: background-color 165ms ease-in-out;
 
+        //background-color: #eee;
         &:first-of-type {
             padding-left: 20px;
         }
-
         &:last-of-type span {
             display: none;
         }
-
         span {
             background-color: inherit;
             display: block;
@@ -70,9 +79,8 @@ mark {
             border-top: 2px solid white;
             backface-visibility: hidden;
         }
-
-        &.active {
-            background-color: var(--primary-color, map-get($generic, "green"));
+        &.active ~ div {
+            background-color: #eee;
         }
     }
 }

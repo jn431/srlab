@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Utility
  * @package  srlab
@@ -18,11 +17,8 @@
  * HEXtoRGB
  * HEXtoHSL
  */
-
 namespace srlab\classes;
-
 defined('ABSPATH') || exit;
-
 if (!trait_exists('srlab\classes\Utility')) :
    trait Utility
    {
@@ -34,13 +30,11 @@ if (!trait_exists('srlab\classes\Utility')) :
       {
          $svg = $filepathname . '.svg';
          if (file_exists($svg)) {
-
             echo file_get_contents($svg);
          } else {
             return;
          }
       }
-
       /**
        * Render SVG w/ Params
        * @access  public static
@@ -57,7 +51,6 @@ if (!trait_exists('srlab\classes\Utility')) :
          include $svg;
          return ob_get_clean();
       }
-
       /**
        * Count non empty associative array
        * @access public static
@@ -73,7 +66,6 @@ if (!trait_exists('srlab\classes\Utility')) :
                return isset($x);
             }));
       }
-
       /**
        * Check if plugin is active
        * @access  public static
@@ -102,11 +94,9 @@ if (!trait_exists('srlab\classes\Utility')) :
             'post_status' => 'inherit',
          );
          $post = get_posts($args);
-
          $attachment = $post ? array_pop($post) : null;
          return $attachment ? $attachment->ID : '';
       } // --- Get_attachment_id_by_slug --- //
-
       /**
        * Get menu by location name
        * @param  string  $id
@@ -121,10 +111,8 @@ if (!trait_exists('srlab\classes\Utility')) :
          if ($menu === false) {
             return;
          }
-
          return $menu->$get;
       }
-
       /**
        * Extract pagename "temp-{home}.php'
        * @param object $post
@@ -133,19 +121,15 @@ if (!trait_exists('srlab\classes\Utility')) :
       public function get_temp_name($post = null)
       {
          if ($post !== null) {
-
             $template = (get_page_template_slug($post)) ?: '';
          } else {
             $template = get_page_template_slug();
          }
-
          if (!$template || strpos($template, 'page-templates') === false) {
             return '';
          }
-
          return str_replace(['page-templates/temp-', '.php'], ['', ''], $template);
       }
-
       /**
        * Create page
        *
@@ -157,11 +141,9 @@ if (!trait_exists('srlab\classes\Utility')) :
       {
          $name = wp_strip_all_tags($name);
          $exists = (get_page_by_title($name)) ? get_page_by_title($name, 'ARRAY_A') : null;
-
          if ($exists && $exists['post_status'] === 'publish') {
             return;
          }
-
          $post_data = array(
             'post_title'    => $name,
             'post_content'  => $content,
@@ -174,7 +156,6 @@ if (!trait_exists('srlab\classes\Utility')) :
          $id = wp_insert_post($post_data, true);
          return $id;
       }
-
       /**
        * Programmatically Upload Image - Include path and file ext
        * @param string $filepathname - logos/beach.png
@@ -185,7 +166,6 @@ if (!trait_exists('srlab\classes\Utility')) :
          $upload_dir = wp_upload_dir();
          $image_data = file_get_contents($image_url);
          $filename = basename($image_url);
-
          if (wp_mkdir_p($upload_dir['path'])) {
             $file = $upload_dir['path'] . '/' . $filename;
          } else {
@@ -194,7 +174,6 @@ if (!trait_exists('srlab\classes\Utility')) :
          if (file_exists($file)) {
             return;
          }
-
          file_put_contents($file, $image_data);
          $wp_filetype = wp_check_filetype($filename, null);
          $attachment = array(
@@ -218,7 +197,6 @@ if (!trait_exists('srlab\classes\Utility')) :
          $attachments = get_posts(['post_type' => 'attachment', 'name' => $name, 'posts_per_page' => 1, 'post_status' => 'inherit']);
          return array_pop($attachments);
       }
-
       /**
        * Template create menu
        *
@@ -227,7 +205,6 @@ if (!trait_exists('srlab\classes\Utility')) :
        */
       public function create_a_menu($menu_name, $array)
       {
-
          $defaults = array(
             'menu'                 => '',
             'container'            => '',
@@ -241,13 +218,10 @@ if (!trait_exists('srlab\classes\Utility')) :
             'depth'                => 2,
             'theme_location'       => $menu_name,
          );
-
          if (null !== $array)
             $defaults = array_merge($defaults, $array);
-
          wp_nav_menu($defaults);
       }
-
       /**
        * Convert #HEX to RGB
        * @param  string $hex
@@ -266,7 +240,6 @@ if (!trait_exists('srlab\classes\Utility')) :
          }
          return $rgb;
       }
-
       /**
        * Convert #HEX to HSL
        * ( hue, saturation%, lightness% )
@@ -279,11 +252,9 @@ if (!trait_exists('srlab\classes\Utility')) :
          $r = hexdec(substr($hex, 0, 2)) / 255;
          $g = hexdec(substr($hex, 2, 2)) / 255;
          $b = hexdec(substr($hex, 4, 2)) / 255;
-
          $cmin = min($r, $g, $b);
          $cmax = max($r, $g, $b);
          $delta = $cmax - $cmin;
-
          if ($delta === 0) {
             $hue = 0;
          } elseif ($cmax === $r) {
@@ -293,22 +264,18 @@ if (!trait_exists('srlab\classes\Utility')) :
          } else {
             $hue = ($r - $g) / $delta + 4;
          }
-
          $hue = round($hue * 60);
          if ($hue < 0) {
             $hue += 360;
             $hue = round($hue);
          }
-
          $lightness = (($cmax + $cmin) / 2) * 100;
          $lightness = round($lightness);
-
          $sat = $delta === 0 ? 0 : ($delta / (1 - abs(2 * $lightness - 1))) * 100;
          if ($sat < 0) {
             $sat += 100;
             $sat = round($sat);
          }
-
          return [
             'hue' => $hue,
             'sat' => $sat,

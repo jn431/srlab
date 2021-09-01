@@ -4,41 +4,77 @@ form {
     max-width: 100%;
     direction: ltr;
     position: relative;
-    margin: 0 auto;
 }
-
-.form_container {
+.form--1,
+.form--6,
+.form--12 {
     display: grid;
-    grid-template-columns: repeat(12, 6.5%);
     grid-auto-rows: max-content;
-    grid-gap: 0 2%;
-
-    & > * {
+    grid-gap: 15px 2vw;
+}
+.form--1 {
+    grid-template-columns: 1fr;
+}
+.form--6 {
+    grid-template-columns: repeat(6, 1fr);
+    .form_full {
         grid-column: span 6 / span 6;
     }
-}
-
-// * Input form-wrap
-.form-wrap {
-    margin-bottom: 20px;
-
-    input:not([type="checkbox"]):not([type="radio"]) {
-        @extend .input;
-        margin-top: 5px;
-        width: 100%;
+    @include media("<desktop") {
+        & > * {
+            grid-column: span 6 / span 6;
+        }
+    }
+    @include media(">=desktop") {
+        & > * {
+            grid-column: span 3 / span 3;
+        }
     }
 }
-
+.form--12 {
+    grid-template-columns: repeat(12, 1fr);
+    //grid-gap: 12px 2%;
+    .form_full {
+        grid-column: span 12 / span 12;
+    }
+    @include media("<tablet") {
+        & > * {
+            grid-column: span 12 / span 12;
+        }
+    }
+    @include media(">=tablet") {
+        & > * {
+            grid-column: span 6 / span 6;
+        }
+    }
+}
+// * Input form-wrap
+.form-wrap {
+    label {
+        cursor: pointer;
+        letter-spacing: 0.025em;
+        font-weight: bold;
+    }
+    .input {
+        margin-top: 4px;
+    }
+}
 // * Checkbox and radio form-wrap
 .form-wrap-opt {
     margin-bottom: 15px;
 }
-
-// * Form width 50% rows
-.form-wrap.form_half {
-    grid-column: span 6 / span 6;
+.form-wrap.jsc {
+    justify-self: center;
 }
-// * Form width 50% rows
-.form-wrap.form_full {
-    grid-column: span 12 / span 12;
+.form_full [type="submit"] {
+    min-width: 200px;
+}
+abbr.required {
+    color: map-get($generic, "red");
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 3px;
+    top: -3px;
+    position: absolute;
+    text-decoration: none;
 }

@@ -1,60 +1,58 @@
 ////
 /// @group layout
 ////
-
-%flex {
+// * Flex Wrap * //
+/// @group Flex
+.fl-wrap {
     display: flex;
     position: relative;
+    gap: 45px;
+    @include media("<650px") {
+        flex-wrap: wrap;
+        > .col {
+            flex: 0 0 100%;
+        }
+    }
+    @include media(">=650px") {
+        .col {
+            flex: 1;
+        }
+    }
 }
-
-/// Standard [50% 50%]
+.fl--spr {
+    justify-content: space-between;
+}
+// * Flex [50 / 50] * //
 .l-2 {
-    @extend %flex;
-
     > .col {
         > div {
             flex: 1;
         }
-
         &.content {
             display: flex;
             flex-wrap: wrap;
         }
     }
-
     @include media("<650px") {
         flex-wrap: wrap;
-
         > .col {
             flex: 1 0 100%;
         }
     }
-
     @include media(">=650px") {
         > .col {
             flex: 1;
         }
-
-        > div:nth-child(1) {
-            padding-right: 1rem;
-        }
-        > div:nth-child(2) {
-            padding-left: 1rem;
-        }
     }
 }
-
-/// Standard [33% 33% 33%]
+// * Flex [33 / 33 / 33] * //
 .l-3 {
-    @extend %flex;
-
     @include media("<tablet") {
         flex-wrap: wrap;
         > div {
             flex: 1 0 100%;
         }
     }
-
     @include media(">=tablet", "<desktop") {
         flex-wrap: wrap;
         > div {
@@ -64,25 +62,19 @@
             flex: 1 0 100%;
         }
     }
-
     @include media(">=desktop") {
         > div {
             flex: 1;
         }
     }
 }
-
-/// Column 300px - Fill
-/// Padded Columns
+// * Flex [300PX / FLEXFILL] - {PADDED} * //
 .l-300 {
-    @extend %flex;
-
     @include media("<650px") {
         flex-wrap: wrap;
         > .col {
             flex: 0 0 100%;
         }
-
         .col + .col {
             padding-top: 1.5rem;
         }
@@ -91,7 +83,6 @@
         > .col {
             flex: 1;
         }
-
         > .col:nth-child(1) {
             flex: 0 0 300px;
             padding-right: 1rem;
@@ -101,15 +92,13 @@
         }
     }
 }
+// * Flex [ FLEXFILL / 300PX ] - {PADDED} * //
 .fl-300 {
-    @extend %flex;
-
     @include media("<650px") {
         flex-wrap: wrap;
         > .col {
             flex: 0 0 100%;
         }
-
         .col + .col {
             padding-top: 1.5rem;
         }
@@ -118,56 +107,41 @@
         > .col {
             flex: 1;
         }
-
-        > .col:nth-child(1) {
-            padding-right: 1rem;
-        }
         > .col:nth-child(2) {
             flex: 0 0 300px;
-            padding-left: 1rem;
         }
     }
 }
-
-/// ! Not Padded
+// * Flex [ 300PX - FLEXFILL ] - {NO PADDING} * //
 .cl-300 {
-    @extend %flex;
-
     .col {
         flex: 1;
     }
-
     .col:nth-child(2) {
         margin-left: 30px;
     }
-
     // : COMPACT.CL-300 : //
     @at-root .compact#{&} {
         @include media(">=desktop") {
             display: flex;
-
             .col:nth-child(1) {
                 flex: 0 0 200px;
             }
         }
-
         @include media(">=pc") {
             .col:nth-child(1) {
                 flex: 0 0 320px;
             }
         }
     }
-
     // : CONTAIN.CL-300 : //
     @at-root .contain#{&} {
         @include media(">=tablet") {
             display: flex;
-
             .col:nth-child(1) {
                 flex: 0 0 200px;
             }
         }
-
         @include media(">=pc") {
             .col:nth-child(1) {
                 flex: 0 0 400px;
@@ -175,12 +149,10 @@
         }
     }
 }
-
 /// Flex Modifiers
 /// Row Reverse
 .--row-rev {
     flex-direction: row-reverse;
-
     > div:nth-child(1) {
         padding-right: 0 !important;
         padding-left: 30px;
@@ -190,23 +162,79 @@
 .--wr {
     flex-wrap: wrap;
 }
-
 /// Align Top
 .--at {
     align-items: flex-start;
 }
-
 /// Align Center
 .--ac {
     align-items: center;
 }
-
 /// Align Bottom
 .--ab {
     align-items: flex-end;
 }
-
 /// Height Stretch
 .--str {
     align-items: stretch;
+}
+// ! NEW FLEX ! //
+.c-2-sm {
+    display: flex;
+    flex-direction: column;
+    // block/tile
+    @include media("<desktop") {
+        .blk:nth-child(2n + 1) {
+            margin-bottom: 10px;
+        }
+        .blk:nth-child(2n) {
+            margin-top: 10px;
+        }
+    }
+    @include media(">=desktop") {
+        flex-direction: row;
+        .blk:nth-child(2n + 1) {
+            margin-right: 2%;
+        }
+        .blk:nth-child(2n) {
+            margin-left: 2%;
+        }
+    }
+}
+.row--2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left right";
+    align-items: center;
+}
+.tbl--2 {
+    @extend .row--2;
+    grid-gap: 12px;
+    .tr {
+        align-items: baseline;
+        grid-column: span 2;
+        grid-gap: 2vw;
+    }
+}
+.c-2 {
+    display: flex;
+    &.product-details {
+        .col:nth-child(2n + 1) {
+            flex: 1;
+        }
+        .col:nth-child(2n) {
+            margin-left: 20px;
+            flex-basis: 85px;
+            text-align: right;
+        }
+    }
+}
+.blk--300 {
+    flex-basis: 300px;
+}
+.blk--50 {
+    flex-basis: 50%;
+}
+.blk--fill {
+    flex: 1;
 }

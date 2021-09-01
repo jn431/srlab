@@ -3,7 +3,6 @@
  * @package     srlab
  * @version     3.3.0
  */
-
 defined('ABSPATH') || exit;
 global $product;
 if( $product->is_type('variable') !== true ) :

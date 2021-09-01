@@ -1,27 +1,20 @@
 <?php
-
 /**
  * Theme Class
  * @package  srlab
  * @author   Jaein Lee
  */
-
 namespace srlab\classes;
-
 use srlab\classes\Utility;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\Theme')) {
    class Theme extends Assets
    {
       use Utility;
-
       public static $site_name  = "SR Lab";
       public static $theme_name = "srlab";
       public static $slogan     = "";
       public static $excerpt_length = 30;
-
       public function init()
       {
          // * User Logged In * //
@@ -31,19 +24,16 @@ if (!class_exists('srlab\classes\Theme')) {
                remove_action('wp_head', '_admin_bar_bump_cb');
             });
          }
-
          // * Theme Support
          add_action('after_setup_theme', [$this, 'sr_theme_support'], 15);
-
          // * Theme Style/Scripts
          add_action('wp_enqueue_scripts', [$this, 'sr_assets_styles']);
          add_action('wp_enqueue_scripts', [$this, 'sr_assets_scripts']);
-
+         add_filter('script_loader_tag',[$this, 'add_type_to_script'], 10, 3);
          add_filter('body_class', [$this, 'sr_bodyclass'], 10, 2);
          add_action('header_class', [$this, 'sr__headerclass']);
          add_filter('intermediate_image_sizes', [$this, 'sr_image_sizes'], 15, 1);
       }
-
       /**
        * General theme set up and support
        */
@@ -59,20 +49,16 @@ if (!class_exists('srlab\classes\Theme')) {
          add_filter("excerpt_length", function () {
             return self::$excerpt_length;
          });
-
          register_nav_menus(
             [
                'primary_menu' => esc_html__('Primary', self::$theme_name),
                'social_menu'  => esc_html__('Social Menu', self::$theme_name),
             ]
          );
-
          add_theme_support('html5', ['search-form', 'comment-form', 'comment-list', 'gallery', 'caption']);
-
          // Enable Shortcodes in widgets
          add_filter('widget_text', 'do_shortcode');
       }
-
       public function sr_theme_js_loader($tag, $handle, $src)
       {
          $handles = ['bx-script'];
@@ -81,18 +67,14 @@ if (!class_exists('srlab\classes\Theme')) {
          }
          return $tag;
       }
-
       public static function sr_body_id($id = '')
       {
          if (is_front_page())
             $id = "home";
-
          if (!$id)
             return;
-
          echo 'id=' . esc_attr($id);
       }
-
       /**
        * Allowed body classes
        * @param   array $wp_classes
@@ -102,10 +84,11 @@ if (!class_exists('srlab\classes\Theme')) {
       public function sr_bodyclass($wp_classes, $extra_classes)
       {
          if (function_exists('is_woocommerce')) {
+            $extra_classes[] = "ecom";
+
             if (is_account_page()) {
                $extra_classes[] = "myaccount";
             } else if (is_cart()) {
-
                $extra_classes[] = "cart";
             } else if (is_checkout()) {
                $extra_classes[] = "checkout";
@@ -117,7 +100,6 @@ if (!class_exists('srlab\classes\Theme')) {
          $wp_classes = array_intersect($wp_classes, $whitelist);
          return array_merge($wp_classes, (array) $extra_classes);
       }
-
       /**
        * Unset unused image sizes
        * @param   array $sizes

@@ -2,20 +2,16 @@
 .cta-links {
     display: inline-flex;
     align-items: center;
-
     .btn + .btn {
         margin-left: 1rem;
     }
-
     .b-cta + .b-cta {
-        margin-left: 1.6rem;
+        margin-left: 1.875rem
     }
 }
-
 p + .cta-links {
     margin-top: 2rem;
 }
-
 .mast {
     align-items: var(--mast-valign, center);
     color: var(--mast-color, $font-color);
@@ -23,72 +19,57 @@ p + .cta-links {
     height: 100vh;
     min-height: 400px;
     position: relative;
-
     .col {
         align-items: center;
     }
-
     .mast-img {
         position: absolute;
         max-width: unset;
         right: 0;
     }
-
     .content {
         z-index: 1;
     }
-
     .hd {
         text-transform: uppercase;
         font-family: $header-stack;
     }
-
     .all-sm {
         position: absolute;
         top: 1rem;
         bottom: 1rem;
-
         &.vertical {
             display: flex;
             flex-direction: column;
-
             .sm + .sm {
                 margin-top: 1rem;
             }
         }
-
         &.vertical {
             &.top {
                 justify-content: flex-start;
             }
-
             &.center {
                 justify-content: center;
             }
-
             &.bottom {
                 justify-content: flex-end;
             }
-
             &.right {
                 right: 1rem;
             }
         }
     }
 }
-
 .bg--overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--mast-bgcolor, "transparent");
-
+    //background-color: var(--mast-bgcolor, transparent);
 }
-
 // : MAST TYPOGRAPHY : //
-
 @include media("<tablet") {
     .super {
         font-size: 1rem;
@@ -97,7 +78,6 @@ p + .cta-links {
         font-size: 2.6rem;
         line-height: 1.05;
     }
-
     .cta-links {
         margin-top: 2rem;
     }
@@ -108,7 +88,6 @@ p + .cta-links {
         margin-top: 1.25rem;
     }
 }
-
 @include media(">=tablet") {
     .super {
         font-size: 1.1rem;
@@ -119,8 +98,7 @@ p + .cta-links {
     .super + h2 {
         margin-top: 1rem;
     }
-
     .hd + p {
-        margin-top: 1.6rem;
+        margin-top: 1.875rem
     }
 }

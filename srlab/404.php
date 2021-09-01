@@ -1,15 +1,11 @@
 <?php
-
 /**
  * 404 Page
  * @package    srlab
  * @author     Jaein Lee
  */
-
 use srlab\classes\Utility;
-
 get_header(); ?>
-
 <main class="error-404">
 	<h1 class="visually-hidden">404</h1>
 	<section class="pd">
@@ -23,7 +19,6 @@ get_header(); ?>
 				<path d="M74 43C74 17 87 0 106 0s32 17 32 43c0 26-13 43-31 43S74 68 74 43zM121 43c0-18-6-29-15-29S91 25 91 43c0 18 6 30 15 30S121 60 121 43z" />
 				<path d="M183 68h-38V57l42-56h12V55h11v13h-11v16h-16V68zM183 55l0-27L163 55H183z" />
 			</svg>
-
 			<p>Oops! It appears that what you're looking for has been moved or deleted.</p>
 			<div class="cta-links">
 				<a href="<?= home_url(); ?>" class="btn pri--btn b--hero">Return to Homepage</a>

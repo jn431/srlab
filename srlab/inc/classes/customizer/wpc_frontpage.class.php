@@ -1,15 +1,11 @@
 <?php
-
 /**
  * Front Page Customizer
  * @package  srlab
  * @author   Jaein Lee
  */
-
 namespace srlab\classes\Customizer;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 	class WPC_Frontpage
 	{
@@ -21,7 +17,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 				'title' 			=> 'Home Slider',
 				'description' 	=> '',
 			]);
-
 			for ($i = 0; $i <= 2; $i++) {
 				$number = $i + 1;
 				$wp_customize->add_section("sr_fp_slider[$i]", [
@@ -31,16 +26,13 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 					'panel' 			=> "sr_fp_slider",
 					'capability' 	=> 'edit_theme_options'
 				]);
-
 				// : Frontpage Mast BG Image : //
 				$wp_customize->add_setting("sr_fp_slider[$i][imageID]", [
 					'default' 	=> 38,
 					'type' 		=> 'option',
 					'transport' => 'refresh',
 					'sanitize_callback' => 'sanitize_text_field',
-
 				]);
-
 				$wp_customize->add_control(
 					new \WP_Customize_Cropped_Image_Control(
 						$wp_customize,
@@ -53,7 +45,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 						]
 					)
 				);
-
 				// : Main Heading : //
 				$wp_customize->add_setting("sr_fp_slider[$i][main_heading]", [
 					'default' => 'Orthodontics',
@@ -61,7 +52,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 					'transport' => 'refresh',
 					'sanitize_callback' => 'sanitize_text_field',
 				]);
-
 				$wp_customize->add_control(
 					"sr_fp_slider[$i][main_heading]",
 					[
@@ -73,7 +63,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 						]
 					]
 				);
-
 				// : Super Heading : //
 				$wp_customize->add_setting("sr_fp_slider[$i][super_heading]", [
 					'default' => '',
@@ -81,7 +70,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 					'transport' => 'refresh',
 					'sanitize_callback' => 'sanitize_text_field',
 				]);
-
 				$wp_customize->add_control(
 					"sr_fp_slider[$i][super_heading]",
 					[
@@ -93,7 +81,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 						]
 					]
 				);
-
 				// : Blurb Text : //
 				$wp_customize->add_setting("sr_fp_slider[$i][blurb]", [
 					'default' => 'Orthodontic services including orthodontic plans, model printing and aligner fabrication.',
@@ -101,7 +88,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 					'transport' => 'refresh',
 					'sanitize_callback' => 'sanitize_text_field',
 				]);
-
 				$wp_customize->add_control(
 					"sr_fp_slider[$i][blurb]",
 					[
@@ -113,14 +99,12 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 						]
 					]
 				);
-
 				for($ct = 0; $ct <= 3; $ct++) {
 					$wp_customize->add_setting( "sr_fp_slider[$i][pages][$ct]", [
 						'default' => '',
 						'type' => 'option',
 						'transport' => 'refresh',
 					]);
-
 					$wp_customize->add_control(
 						"sr_fp_slider[$i][pages][$ct]", [
 						'type' => "dropdown-pages",
@@ -128,7 +112,6 @@ if (!class_exists('srlab\classes\Customizer\WPC_Frontpage')) :
 						'section' => "sr_fp_slider[$i]",
 					] );
 				}
-
 			}
 		}
 	} // End Class

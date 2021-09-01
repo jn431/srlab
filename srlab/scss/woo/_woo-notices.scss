@@ -1,38 +1,82 @@
-.woocommerce-notices-wrapper {
-    margin-bottom: 30px;
-
-    [role="alert"] {
-        background-color: var(--primary-color, #76a5af);
-        border-radius: 5px;
-        border: 1px solid var(--primary-color, #76a5af);
-        color: #2b434a;
-        font-size: 0.85rem;
-        font-weight: bold;
-        letter-spacing: 1px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 1.5rem;
-        text-transform: uppercase;
-
-        @include media("<tablet") {
-            width: 88%;
-        }
-
-        @include media(">=tablet") {
-            width: 70%;
-            max-width: var(--gutter-compact, map-get($sizes, "compact-width"));
-        }
-    }
-
-    a {
-        color: #000;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    span.product-name {
-        color: #fff;
-    }
+.woocommerce-error,
+.woocommerce-info,
+.woocommerce-message {
+    position: relative;
+    background-color: #f7f7f7;
+    border-radius: 2px;
+    border-width: 0 0 0 4px;
+    border-style: solid;
+    color: #252525;
+    font-size: 0.85rem;
+    font-weight: bold;
+    line-height: 1.5;
+    list-style: none inside;
+    margin: 0 0 15px;
+    overflow: hidden;
+    padding: 1.5rem;
+    width: 100%;
 }
+
+.woocommerce-message,
+.woocommerce-info {
+    border-color: #ddd;
+}
+
+.woocommerce-error {
+    border-color: map-get($map: $generic, $key: "red");
+}
+
+// .woocommerce-notices-wrapper {
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-gap: 10px;
+
+//     // Containers
+//     > * {
+//         width: 100%;
+//     }
+
+//     &:last-child() {
+//         margin-bottom: 2rem;
+//     }
+
+//     a {
+//         color: #000;
+//         &:hover {
+//             text-decoration: underline;
+//         }
+//     }
+//     a.view-cart {
+//         float: right;
+//     }
+//     ul {
+//         list-style: none;
+//     }
+
+// }
+
+// .woocommerce-info {
+//     background-color: #EEE;
+//     border-radius: 5px;
+//     border: 1px solid #EEE;
+//     color: darken($primary, 15%);
+//     font-size: 0.85rem;
+//     line-height: 1.5;
+//     font-weight: bold;
+//     margin-left: auto;
+//     margin-right: auto;
+//     padding: 1.5rem;
+// }
+
+// [role="alert"] {
+//     background-color: desaturate($color: lighten($primary, 25%), $amount: 15%);
+//     border-radius: 5px;
+//     border: 1px solid desaturate($color: lighten($primary, 25%), $amount: 15%);
+//     color: darken($primary, 15%);
+//     font-size: 0.85rem;
+//     line-height: 1.5;
+//     font-weight: bold;
+//     margin-left: auto;
+//     margin-right: auto;
+//     padding: 1.5rem;
+// }

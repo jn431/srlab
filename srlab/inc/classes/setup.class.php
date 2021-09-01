@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Theme Activation Setup
  * @package  srlab
@@ -13,28 +12,22 @@
  * [6] WooCommerce Programmatically Add Categories
  * [7] WooCommerce Default Store Options
  */
-
 namespace srlab\classes;
-
 use srlab\classes\Utility;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\Setup')) :
    class Setup extends Theme
    {
       use Utility;
-
       public $author_id    = 1;
       public $status       = 'publish';
       public $type;
       public $default = [
-			"address"   => "2355 160 St",
-			"city"		=> "Surrey",
-			"state"		=> "CA:BC",
-			"zip"			=> "V3S 9N6"
-		];
-
+         "address"   => "2355 160 St",
+         "city"      => "Surrey",
+         "state"      => "CA:BC",
+         "zip"         => "V3S 9N6"
+      ];
       public function sr_new_install()
       {
          $this->sr_base_settings();
@@ -42,18 +35,16 @@ if (!class_exists('srlab\classes\Setup')) :
          $this->sr_create_the_homepage();
          $this->sr_create_homepage_slider();
          $this->sr_setup_footer_menus();
-
          $this->Upload_Img("orthodontics.png");
          $this->Upload_Img("surgical-guides.png");
          $this->Upload_Img("training.png");
          // ! New installation add option to database ! //
          add_option('sr_theme', true);
       }
-
-      public function sr_new_install_woo() {
+      public function sr_new_install_woo()
+      {
          $this->sr_woo_setup();
       }
-
       /**
        * Create Primary Menu
        */
@@ -62,7 +53,6 @@ if (!class_exists('srlab\classes\Setup')) :
          $menu_exists = wp_get_nav_menu_object("Primary Menu");
          if (!$menu_exists) {
             $menu_id = wp_create_nav_menu("Primary Menu");
-
             // Set up default BuddyPress links and add them to the menu.
             wp_update_nav_menu_item($menu_id, 0, array(
                'menu-item-title' =>  __('Home'),
@@ -70,21 +60,18 @@ if (!class_exists('srlab\classes\Setup')) :
                'menu-item-url' => home_url('/'),
                'menu-item-status' => 'publish'
             ));
-
             wp_update_nav_menu_item($menu_id, 0, array(
                'menu-item-title' =>  __('About Us'),
                'menu-item-classes' => 'about-us',
                'menu-item-url' => home_url('/about-us/'),
                'menu-item-status' => 'publish'
             ));
-
             wp_update_nav_menu_item($menu_id, 0, array(
                'menu-item-title' =>  __('Shop'),
                'menu-item-classes' => 'shop',
                'menu-item-url' => home_url('/shop/'),
                'menu-item-status' => 'publish'
             ));
-
             wp_update_nav_menu_item($menu_id, 0, array(
                'menu-item-title' =>  __('Contact'),
                'menu-item-classes' => 'contact',
@@ -98,7 +85,6 @@ if (!class_exists('srlab\classes\Setup')) :
             }
          }
       }
-
       /**
        * Set Base Options
        */
@@ -119,7 +105,6 @@ if (!class_exists('srlab\classes\Setup')) :
          update_option('large_size_w', 1920);
          update_option('large_size_h', 1080);
          update_option('large_crop', 1);
-
          update_option('blogname', Theme::$site_name);
          update_option('blogdescription', Theme::$slogan);
          update_option('permalink_structure', '/%postname%/');
@@ -129,7 +114,6 @@ if (!class_exists('srlab\classes\Setup')) :
          update_option('users_can_register', 1);
          update_option('show_on_front', 'page');
       }
-
       /**
        * Create Homepage
        */
@@ -143,7 +127,6 @@ if (!class_exists('srlab\classes\Setup')) :
          }
          update_option('page_on_front', $home->ID);
       }
-
       /**
        * Create Homepage Mast Slider
        */
@@ -170,10 +153,8 @@ if (!class_exists('srlab\classes\Setup')) :
                   "pages"           => [1 => 1, 2 => 2]
                ]
             ];
-
          update_option("sr_fp_slider", $opt);
       }
-
       /**
        * Set Site Footer Menus
        */
@@ -182,19 +163,22 @@ if (!class_exists('srlab\classes\Setup')) :
          $opt['menu'] = ['primary-menu', 'primary-menu'];
          update_option("sr_footer_menus", $opt);
       }
-
       /**
        * WooCommerce Default Store Options
        */
       public function sr_woo_setup()
-		{
-			update_option('woocommerce_store_address', $this->default['address']);
-			update_option('woocommerce_store_city', $this->default['city']);
-			update_option('woocommerce_default_country', $this->default['state']);
-			update_option('woocommerce_store_postcode', $this->default['zip']);
-			update_option('woocommerce_enable_reviews', false);
-         update_option( 'woocommerce_shop_page_display', 'subcategories');
-         update_option( 'woocommerce_catalog_rows', 6);
-		}
+      {
+         update_option('woocommerce_store_address', $this->default['address']);
+         update_option('woocommerce_store_city', $this->default['city']);
+         update_option('woocommerce_default_country', $this->default['state']);
+         update_option('woocommerce_store_postcode', $this->default['zip']);
+         update_option('woocommerce_enable_reviews', false);
+         update_option('woocommerce_show_marketplace_suggestions', false); // disable marketplace
+         update_option('woocommerce_shop_page_display', 'subcategories');
+         update_option('woocommerce_catalog_rows', 6);
+         update_option('woocommerce_enable_guest_checkout', false);
+         update_option('woocommerce_enable_checkout_login_reminder', false);
+         update_option('woocommerce_ship_to_destination', 'shipping');
+      }
    }
 endif;

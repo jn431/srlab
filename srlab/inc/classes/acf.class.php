@@ -4,11 +4,8 @@
  * @package  srlab
  * @author   Jaein Lee
  */
-
 namespace srlab\classes;
-
 defined('ABSPATH') || exit;
-
 if (!class_exists('srlab\classes\ACF')) :
 	class ACF
 	{
@@ -19,7 +16,6 @@ if (!class_exists('srlab\classes\ACF')) :
 			add_filter('acf/settings/save_json', [$this, 'acf_json_save']);
 			add_filter('acf/settings/load_json', [$this, 'acf_json_load']);
 		}
-
 		/**
 		 * Create theme options page
 		 */
@@ -34,7 +30,6 @@ if (!class_exists('srlab\classes\ACF')) :
 				]);
 			}
 		}
-
 		/**
 		 * Get menu names
 		 * @param string $field
@@ -43,7 +38,6 @@ if (!class_exists('srlab\classes\ACF')) :
 		public function acf_admin_option_menu_list($field) {
 		$field['choices'] = [];
 		$choices = get_registered_nav_menus();
-
 			foreach ($choices as $choice => $val) {
 				$val = $val;
 				$name = $choice;
@@ -51,13 +45,11 @@ if (!class_exists('srlab\classes\ACF')) :
 			}
 			return $field;
 		}
-
 		public function acf_json_load($paths) {
 			unset($paths[0]);
 			$paths = [THEME_PATH . 'assets/json/'];
 			return $paths;
 		}
-
 		public function acf_save_json($path) {
 			$path = THEME_PATH . 'assets/json/';
 			return $path;

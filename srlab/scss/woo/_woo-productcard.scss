@@ -2,49 +2,40 @@
 .p-card_img {
     display: none;
 }
-
 .product-card {
     background-color: #fafafa;
     border: 1px solid #f1f1f1;
     position: relative;
-
     > div {
         display: flex;
         height: 100%;
         padding: 1rem 0;
     }
-
     .col {
         padding: 0 1rem;
-
         &:nth-of-type(1) {
             align-items: center;
             display: inline-flex;
             flex: 0;
             justify-content: center;
-
             @include media(">=tablet") {
                 border-right: 1px solid var(--primary-color, $primary);
             }
         }
-
         &:nth-of-type(2) {
             flex-wrap: wrap;
             display: inline-flex;
             align-content: space-between;
-
             @include media(">=tablet") {
                 padding-left: 1rem;
             }
         }
     }
-
     h2 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
         font-weight: bold;
     }
-
     .price {
         font-weight: bold;
         line-height: 1;
@@ -52,31 +43,24 @@
         .amount {
             font-size: 2rem;
         }
-
         .unit-name {
             flex: 0 0 100%;
         }
     }
-
     a {
         display: inline-block;
-
         &.btn {
             margin-top: 1rem;
         }
-
         &[rel="tag"] {
             margin-bottom: 5px;
         }
     }
-
 }
-
 .product-category {
     border: 1px solid #ccc;
     overflow: hidden;
     padding: 1rem;
-
     img {
         position: absolute;
         bottom: 0;

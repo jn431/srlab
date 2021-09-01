@@ -4,15 +4,12 @@
     background-color: var(--primary-color, $primary);
     color: var(--font-color, $font-color);
     border-radius: 3px;
-
     + .sm {
         margin-left: 6px;
     }
-
     &:hover {
         background-color: #fff;
     }
-
     &.instagram::after {
         content: "\f12d"; // NO BOX
     }
@@ -23,12 +20,10 @@
         content: "\f305"; // NO BOX
     }
 }
-
 footer {
     .social-media .sm {
         width: 28px;
         height: 28px;
-
         &:hover {
             color: var(--font-color, $font-color);
         }
