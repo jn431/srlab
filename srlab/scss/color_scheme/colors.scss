@@ -23,7 +23,7 @@ $input_types: "text", "password", "date", "datetime", "datetime-local", "email",
    background-color: lighten($desat, 32%);
 }
 %default-input-style {
-   border: 1px solid map-get($borders, "input");
+   border: 1px solid map-get($inputs, "border-color");
    border-radius: 2px;
    &:hover {
       @extend %input-hover;

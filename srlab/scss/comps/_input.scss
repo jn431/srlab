@@ -3,9 +3,9 @@ textarea,
 select {
     background-color: #fff;
     border-color: map-get($inputs, "border-color");
-    border-radius: 2px;
+    border-radius: map-get($inputs, "border-radius");
     border-style: solid;
-    border-width: 1px;
+    border-width: map-get($inputs, "border-width");
     font-size: inherit;
     &:focus,
     &:active {
@@ -48,8 +48,8 @@ input:disabled,
 button:disabled {
     pointer-events: none;
     cursor: not-allowed;
-    background-color: #859da4;
-    border-color: #859da4;
+    background-color: map-get($inputs, "disabled");
+    border-color: map-get($inputs, "disabled");
 }
 /* Buttons */
 [type="button"],

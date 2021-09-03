@@ -11,22 +11,22 @@
 ////
 /// @group animate
 ////
-@keyframes fadein {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-@keyframes fade_out {
-    0% {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
+// @keyframes fadein {
+//     0% {
+//         opacity: 0;
+//     }
+//     100% {
+//         opacity: 1;
+//     }
+// }
+// @keyframes fade_out {
+//     0% {
+//         opacity: 1;
+//     }
+//     to {
+//         opacity: 0;
+//     }
+// }
 /// Elastic
 /// @param {String} $direction [up] - up/down/left/right
 @mixin elastic($direction) {
@@ -66,7 +66,7 @@
       }
   } // --- elastic up --- //
 }
-@include elastic("left");
+
 /// Fade Up/Down
 @mixin fade_directional {
     @keyframes fade_down {

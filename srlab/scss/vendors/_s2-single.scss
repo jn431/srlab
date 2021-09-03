@@ -1,0 +1,18 @@
+.select2-selection--single {
+    border-color: map-get($inputs, "border-color");
+    border-radius: map-get($inputs, "border-radius");
+    border-style: solid;
+    border-width: map-get($inputs, "border-width");
+    cursor: pointer;
+    display: block;
+    line-height: $input-height-inner;
+
+    .select2-selection__rendered {
+        display: block;
+        padding-left: 8px;
+        padding-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

@@ -26,10 +26,10 @@ class SRCheckout {
          }
          else if ( DIR === "next" ) {
             // self.validate_step( curr );
-            console.log( "Validate " + curr );
-            console.log( "Val: " + self.validate_step( curr ) );
-            // self.goto( next ).set_local( next );
-            // self.progress( next );
+            if ( self.validate_step( curr ) === true ) {
+               self.goto( next ).set_local( next );
+               self.progress( next );
+            }
          }
       } );
    }
@@ -47,7 +47,9 @@ class SRCheckout {
       }
 
       $( ".tile.step" ).removeClass( "active" ).attr( "tabindex", 0 ).fadeOut( 200 );
-      TO.addClass("active").attr( "tabindex", 1 ).fadeIn( 600 );
+      TO.addClass( "active" ).attr( "tabindex", 1 ).fadeIn( 600 );
+
+      return this;
    }
 
    progress = ( to ) => {
@@ -69,17 +71,16 @@ class SRCheckout {
       let count = 0;
 
       if ( REQ.length > 0 ) {
-         console.log( "Hads validations" );
          let all_inputs = REQ.find( ".input" );
 
          all_inputs.each( function ( i ) {
             if ( !$( this ).val() ) {
-               $(this).addClass("invalid").focus();
+               $( this ).addClass( "invalid" ).focus();
                count++;
             }
          } );
 
-         if( count !== 0){
+         if ( count !== 0 ) {
             return false;
          } else {
             return true;

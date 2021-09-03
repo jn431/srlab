@@ -17,6 +17,10 @@
     width: 100%;
 }
 
+a.view-cart {
+    float: right;
+}
+
 .woocommerce-message,
 .woocommerce-info {
     border-color: #ddd;
@@ -25,35 +29,6 @@
 .woocommerce-error {
     border-color: map-get($map: $generic, $key: "red");
 }
-
-// .woocommerce-notices-wrapper {
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     grid-gap: 10px;
-
-//     // Containers
-//     > * {
-//         width: 100%;
-//     }
-
-//     &:last-child() {
-//         margin-bottom: 2rem;
-//     }
-
-//     a {
-//         color: #000;
-//         &:hover {
-//             text-decoration: underline;
-//         }
-//     }
-//     a.view-cart {
-//         float: right;
-//     }
-//     ul {
-//         list-style: none;
-//     }
-
-// }
 
 // .woocommerce-info {
 //     background-color: #EEE;
