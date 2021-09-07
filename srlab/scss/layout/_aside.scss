@@ -1,0 +1,51 @@
+#login-panel {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    color: #000;
+    background: transparentize(desaturate($primary, 45%), 0.1);
+    padding: 3% 2% 2% 2%;
+    height: 100vh;
+
+    #account-signup {
+        font-weight: bold;
+
+        a {
+            color: darken($primary, 20%);
+        }
+    }
+
+    #login-x {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+#login-btn {
+    @include media("<tablet") {
+    font-size: 12px;
+    }
+}
+
+#account-signup {
+    margin-top: 15px;
+}
+
+#login-x {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 30px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+body[data-overlay] {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}

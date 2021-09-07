@@ -21,7 +21,7 @@ defined('ABSPATH') || exit;
 				<?php endif; ?>
 			</p>
 		<?php else : ?>
-			<h2 class="hd--2 woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
+			<h2 class="hd--1 woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
 				<?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Order Completed', 'srlab'), $order);
 				?>
 			</h2>

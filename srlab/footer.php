@@ -38,7 +38,7 @@ $menus = get_option('sr_footer_menus')['menu'];
 		</div>
 	</section>
 	<section id="copyright">
-		<div class="contain fl-wrap l-2">
+		<div class="contain fl-wrap c-2">
 			<div class="col"><?= get_bloginfo('name') . " &copy; " . date('Y'); ?></div>
 			<div class="col privacy">
 				<a href="<?php echo esc_attr(esc_url(get_privacy_policy_url())); ?>"><?php esc_html_e('Privacy Policy', 'srlab') ?></a>

@@ -1,7 +1,5 @@
 <?php if ('yes' === get_option('woocommerce_enable_myaccount_registration')) : ?>
-	<div class="tile slim">
-		<p class="center">Don’t have an account? <a href="<?= wp_registration_url(); ?>">Sign up</a></p>
-	</div>
+
 	<div id="customer_register" class="tile slim">
 		<h2 class="title center"><?php esc_html_e('Sign Up', 'woocommerce'); ?></h2>
 		<form method="post" class="acc-form form--1 register" <?php do_action('woocommerce_register_form_tag'); ?>>

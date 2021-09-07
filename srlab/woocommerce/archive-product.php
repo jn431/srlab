@@ -13,9 +13,9 @@ do_action('woocommerce_before_main_content'); ?>
       <?php
       if (is_shop()) {
          //echo "<h1 class='visually-hidden'>Products</h1>";
-         echo "<h1 class='title'>Available Services & Products</h1>";
+         echo "<h1 class='hd--1 title'>Available Services & Products</h1>";
       } else {
-         echo (get_queried_object()) ? "<h1 class='title'>" . get_queried_object()->name . "</h1>" : "";
+         echo (get_queried_object()) ? "<h1 class='hd--1 title'>" . get_queried_object()->name . "</h1>" : "";
       }
       if (woocommerce_product_loop()) :
          do_action('woocommerce_before_shop_loop');

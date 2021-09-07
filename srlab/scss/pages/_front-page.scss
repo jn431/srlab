@@ -2,6 +2,9 @@
  * > Frontpage - body.home
  * Author: Jaein Lee
  */
+ @include fadein;
+ @include elastic("left");
+
 body.home {
     header {
         position: absolute;

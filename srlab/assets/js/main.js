@@ -1,8 +1,13 @@
+import { SRGlobal } from './globaljs.js';
 import { FormHandler } from './form.js';
 import { SRCheckout } from './checkout.js';
 
 let Frm = new FormHandler;
 let CHECKOUT = new SRCheckout;
+let SITEWIDE = new SRGlobal;
+
+SITEWIDE.mobile();
+SITEWIDE.login();
 CHECKOUT.init();
 
 $( document ).ready( function () {

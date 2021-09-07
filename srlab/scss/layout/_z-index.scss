@@ -24,3 +24,10 @@ span.chevron {
 a.--overlay {
     z-index: 5;
 }
+
+#login-panel {
+    z-index: 500;
+}
+#login-x {
+    z-index: 501;
+}

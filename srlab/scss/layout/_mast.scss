@@ -2,11 +2,23 @@
 .cta-links {
     display: inline-flex;
     align-items: center;
-    .btn + .btn {
-        margin-left: 1rem;
+
+    @include media("<650px") {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .btn + .btn {
+            margin-top: 6px;
+        }
     }
-    .b-cta + .b-cta {
-        margin-left: 1.875rem
+
+    @include media(">=650px") {
+        .btn + .btn {
+            margin-left: 1rem;
+        }
+        .b-cta + .b-cta {
+            margin-left: 1.875rem;
+        }
     }
 }
 p + .cta-links {
@@ -78,9 +90,7 @@ p + .cta-links {
         font-size: 2.6rem;
         line-height: 1.05;
     }
-    .cta-links {
-        margin-top: 2rem;
-    }
+
     .super + h2 {
         margin-top: 0.75rem;
     }
@@ -99,6 +109,6 @@ p + .cta-links {
         margin-top: 1rem;
     }
     .hd + p {
-        margin-top: 1.875rem
+        margin-top: 1.875rem;
     }
 }

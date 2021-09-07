@@ -5,15 +5,11 @@
  * @package 	srlab
  * @version 	4.1.0
  */
-
-use srlab\classes\Utility;
-
 defined('ABSPATH') || exit; ?>
-<?php do_action('woocommerce_before_customer_login_form'); ?>
-<div id="customer_login" class="tile">
+<div class="compact"><?php do_action('woocommerce_before_customer_login_form'); ?></div>
+<div id="customer_login" class="tile slim">
+	<h3 class="title center"><?php esc_html_e('Login', 'woocommerce'); ?></h3>
 	<form id="login-form" class="acc-form form--1 login" method="post">
-		<button type="button" id="login-x" class="plain"><?php Utility::RenderSVG(THEME_PATH . "assets/svgs/x");?></button>
-		<h3 class="title hd--3 center"><?php esc_html_e('Login', 'woocommerce'); ?></h3>
 		<?php do_action('woocommerce_login_form_start'); ?>
 		<div class="form-wrap">
 			<label for="username" class="required"><?php esc_html_e('Username or Email', 'woocommerce'); ?></label>
@@ -44,7 +40,7 @@ defined('ABSPATH') || exit; ?>
 		</div>
 	</form>
 
-	<div id="account-signup" class="tile">
+	<div id="account-signup" class="tile slim">
 		<p class="center">Don’t have an account? <a href="<?= home_url('signup'); ?>">Sign up</a></p>
 	</div>
 

@@ -49,14 +49,34 @@ if (!class_exists('srlab\classes\Ecommerce\Frontend')) :
 		public function sr_checkout()
 		{
 			add_filter('woocommerce_checkout_fields', [$this, 'sr_checkout_input']);
-			add_action( 'woocommerce_before_checkout_form', [$this, 'hide_checkout_coupon_form'], 5 );
+			add_action('woocommerce_before_checkout_form', [$this, 'sr_hide_checkout_coupon_form'], 5);
+			add_filter('woocommerce_coupon_error', [$this, 'sr_promo_code_error_text'], 10, 3);
 			//add_filter('woocommerce_shipping_fields', [$this, 'sr_checkout_input']);
 		}
 
 		/**
+		 * Change promo code error message
+		 * @see     woocommerce\includes\class-wc-discounts.php
+		 * @param 	string  $err
+		 * @param 	int 	  $err_code
+		 * @param 	object  $parm
+		 * @return 	string  $err
+		 */
+		public function sr_promo_code_error_text($err, $err_code, $parm)
+		{
+			switch ($err_code) {
+				case 105:
+					$err = sprintf(__('"%s" is in invalid code.', 'woocommerce'), $parm->get_code());
+					break;
+			}
+			return $err;
+		}
+
+
+		/**
 		 * Hide coupon field
 		 */
-		public function hide_checkout_coupon_form()
+		public function sr_hide_checkout_coupon_form()
 		{
 			echo '<style>.woocommerce-form-coupon-toggle {display:none;}</style>';
 		}

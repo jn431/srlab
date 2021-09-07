@@ -36,11 +36,14 @@ $code-font-stack: Consolas, Monaco, monospace;
 $font-stack: "Poppins", "Segoe UI", sans-serif !default;
 $header-stack: "Span Font", "Poppins", "Segoe UI", sans-serif;
 $body-stack: "Modelica", sans-serif;
-// [1] Body
-body {
+
+// [1] Base Font
+body,
+input,
+button {
     font-size: 14px;
-    color: $font-color;
     font-family: $body-stack;
+    color: $font-color;
 }
 // [2] Links
 a {
@@ -55,33 +58,37 @@ h2,
     font-weight: bold;
     text-transform: capitalize;
 }
-.hd--2 {
-    font-size: 1.875rem;
+
+.hd--1 {
+    font-size: 1.675rem;
     @include media(">=desktop") {
         font-size: 2.1875rem;
     }
 }
 form h3,
 .hd--3 {
-    font-size: 0.9875rem;
-    @include media(">=desktop") {
+    @include media("<650px") {
+        font-size: 20px;
+    }
+    @include media(">=650px", "<desktop") {
         font-size: 1.1875rem;
+    }
+    @include media(">=desktop") {
+        font-size: 1.3875rem;
     }
 }
 strong {
     font-weight: bold;
 }
+
 .title {
     @extend %accent;
     font-family: $header-stack;
-    font-size: 1.1rem;
-    @include media(">=tablet") {
-        font-size: 1.7rem;
-    }
     &.center::after {
-        margin: 0.5rem auto 1rem auto;
+        margin: 0.5rem auto 1rem auto !important;
     }
 }
+
 .hdr {
     font-family: $header-stack;
 }
@@ -128,5 +135,14 @@ body.home {
         .svg-btn span {
             font-size: 1.25rem;
         }
+    }
+}
+
+nav#primary > ul > li > a {
+    @include media("<tablet") {
+        font-size: 1.18rem;
+    }
+    @include media(">=tablet") {
+        font-size: 0.82rem;
     }
 }

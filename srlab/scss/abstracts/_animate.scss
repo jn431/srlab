@@ -11,14 +11,16 @@
 ////
 /// @group animate
 ////
-// @keyframes fadein {
-//     0% {
-//         opacity: 0;
-//     }
-//     100% {
-//         opacity: 1;
-//     }
-// }
+@mixin fadein {
+    @keyframes fadein {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
 // @keyframes fade_out {
 //     0% {
 //         opacity: 1;
@@ -48,23 +50,23 @@
                 opacity: 1;
             }
         }
-    } // --- elastic up --- //
+    }
     @if $direction == "left" {
-      @keyframes elastic_up {
-          0% {
-              //-webkit-transform: translateY(1200px) scale(0.7);
-              //transform: translateY(1200px) scale(0.7);
-          }
-          20% {
-            opacity: 0;
-          }
-          to {
-            -webkit-transform: translateX(0%) perspective(1px);
-            transform: translateX(0%) perspective(1px);
-              opacity: 1;
-          }
-      }
-  } // --- elastic up --- //
+        @keyframes elastic_up {
+            0% {
+                //-webkit-transform: translateY(1200px) scale(0.7);
+                //transform: translateY(1200px) scale(0.7);
+            }
+            20% {
+                opacity: 0;
+            }
+            to {
+                -webkit-transform: translateX(0%) perspective(1px);
+                transform: translateX(0%) perspective(1px);
+                opacity: 1;
+            }
+        }
+    }
 }
 
 /// Fade Up/Down

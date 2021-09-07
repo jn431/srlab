@@ -106,6 +106,9 @@ a.checkout-button {
 .cart .coupon {
     display: flex;
     margin-top: 1rem;
+    #coupon_code {
+        margin-right: -1px;
+    }
 }
 #billing_address_2_field {
     align-self: end;

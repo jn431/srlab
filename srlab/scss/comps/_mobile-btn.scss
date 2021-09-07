@@ -1,0 +1,154 @@
+/** burger-menu.scss */
+$button-size: 50;
+$circumf: round(2 * 3.14159265358979 * $button-size); // 314
+$line-color: #1d1d1d;
+$line-thickness: 2;
+
+%line {
+    height: $line-thickness * 1px;
+    width: var(--line-width, round($button-size / 2) * 1px);
+}
+
+nav#mobile,
+nav#primary,
+button.wrap {
+    display: flex;
+    align-items: center;
+}
+
+button.wrap {
+    width: var(--button-size, $button-size * 1px);
+    height: var(--button-size, $button-size * 1px);
+}
+
+button .lines {
+    width: var(--stack-width, round($button-size / 2) * 1px);
+    height: var(--stack-height, round($button-size / 2.4) * 1px);
+}
+
+#mob-btn {
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    z-index: 101;
+
+    svg {
+        position: absolute;
+    }
+
+    @include media(">=desktop") {
+        display: none;
+    }
+}
+
+button .lines {
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.circle {
+    fill: transparent;
+    stroke-width: $line-thickness + 1 * 1px;
+    stroke: $line-color;
+    stroke-dasharray: var(--circumf, $circumf);
+    stroke-dashoffset: 0;
+    animation: dash_out 0.5s forwards;
+
+    &.first {
+        stroke-opacity: 0;
+    }
+
+    &.open {
+        animation: dash 1s forwards;
+    }
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: var(--circumf, $circumf);
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes dash_out {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: var(--circumf, $circumf);
+    }
+}
+
+.menu__line {
+    @extend %line;
+    position: absolute;
+    left: 0;
+    background-color: $line-color;
+    pointer-events: none;
+}
+
+.menu__line--1 {
+    top: 0;
+    transition: transform 0.3s ease-in-out, top 0.2s ease-in-out 0.3s;
+}
+
+.menu__line--2 {
+    top: $line-thickness / 2 * 1px;
+    bottom: 0;
+    margin: auto;
+}
+
+.menu__line--3 {
+    bottom: 0;
+}
+
+.menu__line--1:before {
+    @extend %line;
+    content: "";
+    position: absolute;
+    background-color: $line-color;
+    transition: transform 0.1s ease-in-out 0.2s;
+    left: 0;
+}
+.menu__line--2 {
+    transition: opacity 0s ease-in-out 0.3s;
+}
+.menu__line--3 {
+    transition: opacity 0s ease-in-out 0.3s, bottom 0.2s ease-in-out 0.3s;
+}
+.open .menu__line {
+    left: 0;
+}
+.open .menu__line--1 {
+    top: calc(50% - #{$line-thickness / 2}px);
+    transform: rotate(135deg);
+    transition: top 0.3s ease-in-out, transform 0.3s linear 0.3s;
+
+    &:before {
+        transform: rotate(90deg);
+        left: 0;
+        transition: transform 0.1s ease-in-out 0.3s;
+    }
+}
+
+.open .menu__line--2 {
+    opacity: 0;
+    transition: opacity 0s ease-in-out 0.3s;
+}
+.open .menu__line--3 {
+    bottom: calc(50% - #{$line-thickness / 2}px);
+    opacity: 0;
+    transition: bottom 0.3s ease-in-out, opacity 0s ease-in-out 0.3s;
+}

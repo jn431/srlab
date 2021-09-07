@@ -16,7 +16,7 @@ footer {
         color: var(--primary-lighter, #96bac2);
     }
     .sm:hover {
-       background-color: var(--primary-lighter, #96bac2);
+        background-color: var(--primary-lighter, #96bac2);
     }
     svg {
         max-width: 240px;
@@ -50,11 +50,16 @@ footer.gr .contain {
     line-height: 20px;
     grid-column: span 4;
     .privacy {
-       text-align: right;
+        text-align: right;
     }
     .contain {
         border-top: 1px solid hsl(0deg, 0%, 20%);
         line-height: 1;
         padding: 10px 0;
+    }
+    @include media("<650px") {
+        .col:nth-child(2) {
+            display: none;
+        }
     }
 }
